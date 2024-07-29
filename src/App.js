@@ -1,11 +1,12 @@
+import React from 'react';
+import Layout from './pages/Layout'
 
 
 function App() {
   let name = 'bob'
   return (
     <div className="App">
-      <h1>{name}</h1>
-      hello
+      <Layout></Layout>
     </div>
   );
 }
