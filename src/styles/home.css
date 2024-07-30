@@ -1,0 +1,56 @@
+body {
+  min-height: 100vh;
+  font-family: Tajawal, Helvetica, Arial, sans-serif;
+  font-size: 13.02083333px;
+  background: #f9f9f9;
+  font-weight: 700;
+}
+.button {
+  background-color: #101010;
+  padding: 10.41666667px 15.625px;
+  color: #fff;
+  border: 1.04166667px solid #101010;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+a {
+  text-decoration: none;
+}
+p {
+  display: block;
+  font-size: 14.58333333px;
+  font-weight: 300;
+}
+h1 {
+  font-weight: 300;
+  font-size: 44.27083333px;
+}
+.banner {
+  display: flex;
+  height: 390.625px;
+  margin: 78.125px;
+  background-color: #f3f3f3;
+}
+.banner .content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  flex-basis: 50%;
+  padding: 52.08333333px;
+}
+.banner .banner-img-wrapper {
+  width: 100%;
+  height: 100%;
+  flex-basis: 50%;
+  overflow: hidden;
+}
+.banner .banner-img-wrapper .banner-img {
+  width: 100%;
+  height: 100%;
+  background-image: url(../../public/images/banner-girl1.png);
+  background-position: 50% 50%;
+  background-size: cover;
+  background-repeat: no-repeat;
+}

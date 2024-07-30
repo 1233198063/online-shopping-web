@@ -1,0 +1,84 @@
+@vw: 19.20vw;
+
+@border-width: (20px / @vw);
+@border-width-big: (25px / @vw);
+
+@padding-large: (500px / @vw);
+@padding-big: (300px / @vw);
+@padding-small: (200px / @vw);
+@padding-mini: (100px / @vw);
+
+@margin-mini: (1000px / @vw);
+@margin-small: (1500px / @vw);
+
+body {
+    min-height: 100vh;
+    font-family: Tajawal, Helvetica, Arial, sans-serif;
+    font-size: (250px / @vw);
+    background: #f9f9f9;
+    font-weight: 700;
+}
+
+.button {
+    background-color: #101010;
+    padding: @padding-small @padding-big;
+    color: #fff;
+    border: @border-width solid #101010;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+a {
+    text-decoration: none;
+}
+
+p {
+    display: block;
+    font-size: (280px / @vw);
+    font-weight: 300;
+}
+
+h1{
+    font-weight: 300;
+    font-size: (850px / @vw);
+}
+
+.banner {
+    display: flex;
+
+    height: (7500px / @vw);
+    margin: @margin-small;
+
+    background-color: #f3f3f3;
+
+    .content {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        flex-basis: 50%;
+
+        padding: @margin-mini;
+    }
+
+    .banner-img-wrapper {
+        width: 100%;
+        height: 100%;
+        flex-basis: 50%;
+        overflow: hidden;
+
+        .banner-img{
+            width: 100%;
+            height: 100%;
+
+            background-image: url(../../public/images/banner-girl1.png);
+            background-position: 50% 50%;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+    }
+    
+}
