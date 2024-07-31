@@ -5,7 +5,6 @@ import "../styles/home.css";
 export default function Home() {
   return (
     <div>
-      Home
       <div className="banner">
         <div className="content">
           <h1><strong>See</strong> everything <br /> with <strong>Clarity</strong></h1>

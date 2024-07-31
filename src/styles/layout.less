@@ -1,0 +1,73 @@
+@vw: 19.20vw;
+
+@border-width: (20px / @vw);
+@border-width-big: (25px / @vw);
+
+@padding-large: (500px / @vw);
+@padding-big: (300px / @vw);
+@padding-small: (200px / @vw);
+@padding-mini: (100px / @vw);
+
+@margin-mini: (1000px / @vw);
+@margin-small: (1500px / @vw);
+
+.nav-bar {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    max-height: @margin-small;
+    padding: @margin-mini;
+
+    .web-icon {
+        display: block;
+        min-width: (3000px / @vw);
+        height: @margin-mini;
+
+        .icon-img {
+            width: 100%;
+            height: 100%;
+            background-image: url(../../public/images/eyewear-logo.png);
+            background-size: cover;
+            background-position: 50% 50%;
+            background-repeat: no-repeat;
+        }
+    }
+
+    .nav-links {
+        display: grid;
+        grid-template-columns: repeat(4, auto);
+        column-gap: @padding-big;
+
+        margin-right: @margin-small;
+    }
+
+    .searchbar {
+        display: flex;
+        border: @border-width-big solid #e1e1e1;
+        padding: @padding-mini @padding-small;
+
+        .search-input {
+            border-width: 0px;
+        }
+        
+    }
+
+    .checkout {
+        cursor: pointer;
+    }
+
+    .action-buttons {
+        display: flex;
+        justify-content: flex-end;
+
+        margin-left: @margin-small;
+
+        
+
+        .button-white {
+            background-color: #f2f2f2;
+            color: #7d7d7d;
+            border: 1px solid #e1e1e1;
+        }
+    }
+}

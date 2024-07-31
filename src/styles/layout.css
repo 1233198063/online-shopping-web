@@ -1,0 +1,47 @@
+.nav-bar {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  max-height: 78.125px;
+  padding: 52.08333333px;
+}
+.nav-bar .web-icon {
+  display: block;
+  min-width: 156.25px;
+  height: 52.08333333px;
+}
+.nav-bar .web-icon .icon-img {
+  width: 100%;
+  height: 100%;
+  background-image: url(../../public/images/eyewear-logo.png);
+  background-size: cover;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+}
+.nav-bar .nav-links {
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  column-gap: 15.625px;
+  margin-right: 78.125px;
+}
+.nav-bar .searchbar {
+  display: flex;
+  border: 1.30208333px solid #e1e1e1;
+  padding: 5.20833333px 10.41666667px;
+}
+.nav-bar .searchbar .search-input {
+  border-width: 0px;
+}
+.nav-bar .checkout {
+  cursor: pointer;
+}
+.nav-bar .action-buttons {
+  display: flex;
+  justify-content: flex-end;
+  margin-left: 78.125px;
+}
+.nav-bar .action-buttons .button-white {
+  background-color: #f2f2f2;
+  color: #7d7d7d;
+  border: 1px solid #e1e1e1;
+}

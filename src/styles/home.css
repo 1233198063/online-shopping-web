@@ -29,7 +29,7 @@ h1 {
 .banner {
   display: flex;
   height: 390.625px;
-  margin: 78.125px;
+  margin: 26.04166667px 78.125px;
   background-color: #f3f3f3;
 }
 .banner .content {
