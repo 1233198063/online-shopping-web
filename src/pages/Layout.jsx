@@ -14,22 +14,19 @@ export default function Layout() {
         </a>
 
         <div className="nav-links">
-          <NavLink to={"/home"}>Home</NavLink>
+          <NavLink to={"/home"} >Home</NavLink>
 
-          <NavLink to={"/shop"}>Shop</NavLink>
+          <NavLink to={"/shop"} >Shop</NavLink>
 
-          <NavLink to={"/featured"}>Featured</NavLink>
+          <NavLink to={"/featured"} >Featured</NavLink>
 
-          <NavLink to={"/recommended"}>Recommended</NavLink>
+          <NavLink to={"/recommended"} >Recommended</NavLink>
         </div>
 
         <div className="searchbar">
           <span className="material-symbols-outlined search-icon">search</span>
           <input className="search-input" type="text" placeholder="Search product..." />
-        </div>
-
-        <div className="checkout">
-          <span className="material-symbols-outlined">shopping_bag</span>
+          <span className="material-symbols-outlined shopping-bag">shopping_bag</span>
         </div>
 
         <div className="action-buttons">
