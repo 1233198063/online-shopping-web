@@ -36,6 +36,19 @@ export default function Layout() {
       </nav>
 
       {element}
+
+      <footer className="footer">
+        <div className="footer-left">
+        <p>Developed by <a href="">Olivia</a></p>
+        </div>
+        <div className="footer-middle">
+          <img className="footer-logo" src="" alt="footer logo" />
+          <p>© 2024</p>
+        </div>
+        <div className="footer-right">
+          <p>Fork this project <a href="">HERE</a></p>
+        </div>
+      </footer>
     </div>
   );
 }

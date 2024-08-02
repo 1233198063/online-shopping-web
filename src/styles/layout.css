@@ -65,3 +65,8 @@
   border: 1px solid #e1e1e1;
   margin-left: 10.41666667px;
 }
+.footer {
+  background-color: #f0f0f0;
+  display: flex;
+  justify-content: space-around;
+}
