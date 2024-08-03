@@ -42,7 +42,7 @@ export default function Layout() {
         <p>Developed by <a href="">Olivia</a></p>
         </div>
         <div className="footer-middle">
-          <img className="footer-logo" src="" alt="footer logo" />
+          <img className="footer-logo" src="/images/eyewear-logo.png" alt="footer logo" />
           <p>© 2024</p>
         </div>
         <div className="footer-right">
