@@ -1,10 +1,11 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 import "../styles/home.css";
 
 export default function Home() {
   return (
-    <div>
+    <div className="main-content">
       <div className="banner">
         <div className="content">
           <h1><strong>See</strong> everything <br /> with <strong>Clarity</strong></h1>
@@ -14,20 +15,20 @@ export default function Home() {
             eyes covered.
           </p>
           <br />
-          <a href="" className="button">
+          <NavLink to={"/shop"} className="button">
             Shop Now
             <span class="material-symbols-outlined">arrow_forward</span>
-          </a>
+          </NavLink>
         </div>
         <div className="banner-img-wrapper">
-          <div className="banner-img"></div>
+          <img className="banner-img" src="/images/banner-girl1.png" alt="" />
         </div>
       </div>
 
       <div className="display">
         <div className="display-header">
-          <h1>Featured Products</h1>
-          <a href="/featured">See All</a>
+          <h2>Featured Products</h2>
+          <NavLink to={"/featured"}>See All</NavLink>
         </div>
         <div className="product-display-grid"></div>
       </div>

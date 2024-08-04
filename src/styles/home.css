@@ -26,6 +26,14 @@ h1 {
   font-weight: 300;
   font-size: 44.27083333px;
 }
+h2 {
+  font-weight: 600;
+  font-size: 28.64583333px;
+}
+.main-content {
+  width: 100%;
+  min-height: 100vh;
+}
 .banner {
   display: flex;
   height: 390.625px;
@@ -49,8 +57,19 @@ h1 {
 .banner .banner-img-wrapper .banner-img {
   width: 100%;
   height: 100%;
-  background-image: url(../../public/images/banner-girl1.png);
-  background-position: 50% 50%;
-  background-size: cover;
-  background-repeat: no-repeat;
+  object-fit: cover;
+}
+.display {
+  margin: 78.125px 156.25px;
+}
+.display .display-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.display .display-header a {
+  color: #101010;
+  font-size: 15.625px;
+  font-weight: 600;
+  text-decoration: underline;
 }

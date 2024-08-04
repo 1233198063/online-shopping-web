@@ -10,7 +10,7 @@ export default function Shop() {
         {id: 5, content: 'product5', detail: 'glasses5'},
     ]
   return (
-    <div>
+    <div className="main-content">
       Shop
       <ul>
         {
