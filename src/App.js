@@ -1,12 +1,12 @@
 import React from 'react';
 import Layout from './pages/Layout'
-
+import Count from './components/Count';
 
 function App() {
-  let name = 'bob'
   return (
     <div className="App">
       <Layout></Layout>
+      <Count></Count>
     </div>
   );
 }

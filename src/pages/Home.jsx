@@ -17,7 +17,7 @@ export default function Home() {
           <br />
           <NavLink to={"/shop"} className="button">
             Shop Now
-            <span class="material-symbols-outlined">arrow_forward</span>
+            <span className="material-symbols-outlined">arrow_forward</span>
           </NavLink>
         </div>
         <div className="banner-img-wrapper">

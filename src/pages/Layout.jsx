@@ -30,8 +30,8 @@ export default function Layout() {
         </div>
 
         <div className="action-buttons">
-          <a class="button button-small" href="">Sign Up</a>
-          <a class="button button-small button-white" href="">Sign In</a>
+          <a className="button button-small" href="">Sign Up</a>
+          <a className="button button-small button-white" href="">Sign In</a>
         </div>
       </nav>
 
