@@ -5,12 +5,13 @@ import { useDispatch, useSelector } from 'react-redux'
 export default function Channel() {
 
     const channel = useSelector((state) => state.channel.channelList)
-    // console.log(channel);
+    console.log(channel);
     const dispatch = useDispatch()
 
     // componnetDidMount
     useEffect(() => {
         dispatch(fetchChannelList())
+        // fetchChannelList()()
     }, [])
 
     return (

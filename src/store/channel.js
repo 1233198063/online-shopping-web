@@ -12,7 +12,7 @@ const channelSlice = createSlice({
     reducers: {
         getChannelList(state, action) {
             console.log(action.payload);
-            state.channelList = action.payload
+            // state.channelList = action.payload
         }
     }
 })
@@ -20,11 +20,12 @@ const channelSlice = createSlice({
 export const { getChannelList } = channelSlice.actions
 
 export const fetchChannelList = ()=>{
-    return (dispatch)=>{
-        const test = axios.get('http://geek.itheima.net/v1_0/channels')
-        console.log(test)
+    return async (dispatch)=>{
+        const test = await axios.get('http://geek.itheima.net/v1_0/channels')
+        // console.log(test)
+        dispatch(getChannelList(test.data.data.channels))
     }
-}
+} 
 
 const channelReducer = channelSlice.reducer
 export default channelReducer
