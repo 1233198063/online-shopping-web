@@ -1,13 +1,34 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { configureStore, combineReducers } from "@reduxjs/toolkit";
 
 import counterReducer from "./counter";
-import channelReducer from "./channel"
+import channelReducer from "./channel";
+import { persistReducer, persistStore } from "redux-persist";
+import storage from "redux-persist/lib/storage";
 
-const store = configureStore({
-    reducer:{
-        counter: counterReducer,
-        channel: channelReducer
-    }
+// Combine multiple reducers
+const reducers = combineReducers({
+    counter: counterReducer,
+    channel: channelReducer
 })
+
+// persistent configuration
+const persistConfig = {
+    key:'root',
+    // Storage location, defaults to localStorage
+    storage,
+    whiteList:[],
+    blackList:[]
+}
+
+// Process the reducer
+const persistedReducer = persistReducer(persistConfig, reducers)
+
+// Combinator module
+const store = configureStore({
+    reducer: persistedReducer
+})
+
+// Process the store
+export const persistor = persistStore(store)
 
 export default store;

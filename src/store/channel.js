@@ -12,7 +12,7 @@ const channelSlice = createSlice({
     reducers: {
         getChannelList(state, action) {
             console.log(action.payload);
-            // state.channelList = action.payload
+            state.channelList = action.payload
         }
     }
 })
