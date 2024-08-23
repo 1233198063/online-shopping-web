@@ -1,6 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import FeaturedProducts from "../components/FeaturedProducts";
+import RecommendedProducts from "../components/RecommendedProducts";
 
 import "../styles/home.css";
 
@@ -35,6 +36,16 @@ export default function Home() {
         </div>
         <div className="product-display-grid">
           <FeaturedProducts></FeaturedProducts>
+        </div>
+      </div>
+
+      <div className="display">
+        <div className="display-header">
+          <h2>Recommended Products</h2>
+          <NavLink to={"/recommended"}>See All</NavLink>
+        </div>
+        <div className="product-display-grid">
+          <RecommendedProducts></RecommendedProducts>
         </div>
       </div>
     </div>

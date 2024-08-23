@@ -1,7 +1,6 @@
 import React from 'react';
 import Layout from './pages/Layout'
 import Count from './components/Count';
-import Channel from './components/Channel';
 import Register from './components/Register';
 import Login from './components/Login';
 import AddData from './components/AddData';
@@ -12,7 +11,6 @@ function App() {
     <div className="App">
       <Layout></Layout>
       <Count></Count>
-      <Channel></Channel>
       <Register></Register>
       <Login></Login>
       <AddData></AddData>

@@ -1,18 +1,13 @@
 import React from 'react'
 import { Link, Outlet} from 'react-router-dom'
+import ShopProducts from '../components/ShopProducts'
 
 export default function Shop() {
-    const productsList = [
-        {id: 1, content: 'product1', detail: 'glasses1'},
-        {id: 2, content: 'product2', detail: 'glasses2'},
-        {id: 3, content: 'product3', detail: 'glasses3'},
-        {id: 4, content: 'product4', detail: 'glasses4'},
-        {id: 5, content: 'product5', detail: 'glasses5'},
-    ]
+    
   return (
     <div className="main-content">
-      Shop
-      <ul>
+      <ShopProducts></ShopProducts>
+      {/* <ul>
         {
             productsList.map(item => {
                 return (
@@ -22,7 +17,7 @@ export default function Shop() {
                 )
             })
         }
-      </ul>
+      </ul> */}
       <Outlet></Outlet>
     </div>
   )

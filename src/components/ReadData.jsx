@@ -28,8 +28,8 @@ export default function ReadData() {
   
   return (
     <div>
-      <h2>ReadData</h2>
-      <button onClick={getData}>get</button>
+      {/* <h2>ReadData</h2>
+      <button onClick={getData}>get</button> */}
     </div>
   );
 }

@@ -39,7 +39,7 @@ export default function RecommendedProducts() {
           <ProductCard key={product.id} product={product} />
         ))
       ) : (
-        <p>No featured products found.</p>
+        <p>No recommended products found.</p>
       )}
     </div>
   );

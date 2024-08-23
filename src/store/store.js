@@ -1,14 +1,12 @@
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
 
 import counterReducer from "./counter";
-import channelReducer from "./channel";
 import { persistReducer, persistStore } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 
 // Combine multiple reducers
 const reducers = combineReducers({
     counter: counterReducer,
-    channel: channelReducer
 })
 
 // persistent configuration
