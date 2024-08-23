@@ -1,9 +1,8 @@
-import { nanoid } from "nanoid";
+import { v4 as uuidv4 } from "uuid";
 
-// uuid
 export const productList = [
     {
-        id:nanoid(),
+        id:uuidv4(),
         availableColors: ["#fcf403", "#45fc03"],
         brand: "Black Kibal",
         dateAdded: 1692201251927,
@@ -34,7 +33,7 @@ export const productList = [
         sizes: ["24", "36", "48"]
     },
     {
-        id:nanoid(),
+        id:uuidv4(),
         availableColors: ["#f20707", "#0d0d0d"],
         brand: "Salt Maalat",
         dateAdded: 1692200921155,
@@ -65,7 +64,7 @@ export const productList = [
         sizes: ["24", "36", "48"]
     },
     {
-        id:nanoid(),
+        id:uuidv4(),
         availableColors: ["#076bed"],
         brand: "Sexbomb",
         dateAdded: 1692202029251,
@@ -93,7 +92,7 @@ export const productList = [
         sizes: ["24", "36", "48"]
     },
     {
-        id:nanoid(),
+        id:uuidv4(),
         availableColors: ["#ea0606", "#dac016"],
         brand: "Sexbomb",
         dateAdded: 1692201075022,
@@ -121,7 +120,7 @@ export const productList = [
         sizes: ["24", "36", "48"]
     },
     {
-        id:nanoid(),
+        id:uuidv4(),
         availableColors: ["#242ad6", "#dbe637"],
         brand: "Sexbomb",
         dateAdded: 1692200994692,
@@ -149,7 +148,7 @@ export const productList = [
         sizes: ["24", "36", "48"]
     },
     {
-        id:nanoid(),
+        id:uuidv4(),
         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat placeat similique dicta nulla praesentium deserunt. Corporis repellendus deleniti dolores eligendi.",
         price: 260,
         sizes: [

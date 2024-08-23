@@ -25,7 +25,13 @@ const persistedReducer = persistReducer(persistConfig, reducers)
 
 // Combinator module
 const store = configureStore({
-    reducer: persistedReducer
+    reducer: persistedReducer,
+    middleware:(getDefaultMiddleware)=>{
+        return getDefaultMiddleware({
+            // close serializable check
+            serializableCheck: false
+        })
+    }
 })
 
 // Process the store
