@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react'
 import { getAuth, signInWithEmailAndPassword, signOut } from "firebase/auth";
 
-export default function Demo() {
+export default function Login() {
 
     const [email, setEmail] = useState()
     const [password, setPassword] = useState()

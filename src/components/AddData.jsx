@@ -4,11 +4,13 @@ import { getFirestore } from "firebase/firestore";
 import { app } from '../service/config';
 import { productList } from '../data';
 
-export default function Storage() {
+export default function AddData() {
+    // Initialize Cloud Firestore and get a reference to the service
     const db = getFirestore(app);
 
     const postData = async () => {
 
+        // Add a new document with a generated id
         try {
             for (let i = 0; i < productList.length; i++) {
                 const docRef = await addDoc(collection(db, 'products'), productList[i])
@@ -17,14 +19,6 @@ export default function Storage() {
         } catch (error) {
             console.log(error.message);
         }
-
-
-        // Add a new document with a generated id.
-        // const docRef = await addDoc(collection(db, "cities"), {
-        //     name: "Tokyo",
-        //     country: "Japan"
-        // });
-        // console.log("Document written with ID: ", docRef.id);
 
     }
 

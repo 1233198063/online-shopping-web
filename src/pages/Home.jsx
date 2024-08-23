@@ -1,5 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import FeaturedProducts from "../components/FeaturedProducts";
 
 import "../styles/home.css";
 
@@ -8,7 +9,9 @@ export default function Home() {
     <div className="main-content">
       <div className="banner">
         <div className="content">
-          <h1><strong>See</strong> everything <br /> with <strong>Clarity</strong></h1>
+          <h1>
+            <strong>See</strong> everything <br /> with <strong>Clarity</strong>
+          </h1>
           <p>
             Buying eyewear should leave you happy and good-looking, with money
             in your pocket. Glasses, sunglasses, and contacts—we've got your
@@ -30,7 +33,9 @@ export default function Home() {
           <h2>Featured Products</h2>
           <NavLink to={"/featured"}>See All</NavLink>
         </div>
-        <div className="product-display-grid"></div>
+        <div className="product-display-grid">
+          <FeaturedProducts></FeaturedProducts>
+        </div>
       </div>
     </div>
   );

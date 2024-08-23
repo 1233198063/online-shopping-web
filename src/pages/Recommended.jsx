@@ -1,4 +1,5 @@
 import React from "react";
+import RecommendedProducts from "../components/RecommendedProducts";
 
 export default function Recommended() {
   return (
@@ -17,6 +18,7 @@ export default function Recommended() {
           />
         </div>
       </div>
+      <RecommendedProducts></RecommendedProducts>
     </div>
   );
 }

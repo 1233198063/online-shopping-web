@@ -7,14 +7,14 @@ export default function ReadData() {
   const db = getFirestore(app);
 
   const getData = async () => {
-    // 获取全部
+    // Get mutiple documents
     /* const querySnapshot = await getDocs(collection(db, "products"));
         querySnapshot.forEach((doc) => {
             // doc.data() is never undefined for query doc snapshots
             console.log(doc.id, " => ", doc.data());
         }); */
 
-    // 获取指定的
+    // Get a document
     const q = query(
       collection(db, "products"),
       where("brand", "==", "Sexbomb")
@@ -25,6 +25,7 @@ export default function ReadData() {
       console.log(doc.id, " => ", doc.data());
     });
   };
+  
   return (
     <div>
       <h2>ReadData</h2>
