@@ -4,6 +4,8 @@ import { collection, getDocs, query, where } from "firebase/firestore";
 import { getFirestore } from "firebase/firestore";
 import { app } from "../service/config";
 
+import "../styles/featuredProduct.css"
+
 export default function FeaturedProducts() {
     const db = getFirestore(app);
 
@@ -33,7 +35,7 @@ export default function FeaturedProducts() {
   
 
   return (
-    <div style={{ display: "flex", flexWrap: "wrap", gap: "20px" }}>
+    <div className="products-display">
       {products.length > 0 ? (
         products.map((product) => (
           <ProductCard key={product.id} product={product} />

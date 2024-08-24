@@ -1,0 +1,45 @@
+@vw: 19.2vw;
+
+@border-width: (20px / @vw);
+@border-width-big: (25px / @vw);
+
+@padding-large: (500px / @vw);
+@padding-big: (300px / @vw);
+@padding-small: (200px / @vw);
+@padding-mini: (100px / @vw);
+
+@margin-mini: (1000px / @vw);
+@margin-small: (1500px / @vw);
+@margin-big: (3000px / @vw);
+
+.card {
+  border: 1px solid #ccc;
+  padding: 0px;
+  width: 2 * @margin-big;
+  max-height: 30rem;
+//   margin: @padding-large;
+
+  .card-img {
+    width: 100%;
+    height: 1.5 * @margin-big;
+    background-color: #f1f1f1;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      transform: scale(1);
+      transition: all 0.5s;
+    }
+  }
+
+  .card-text {
+    width: 100%;
+    padding: @padding-large;
+  }
+}
+
+.card:hover {
+    img {
+        transform: scale(1.1);
+    }
+}

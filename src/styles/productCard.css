@@ -1,0 +1,24 @@
+.card {
+  border: 1px solid #ccc;
+  padding: 0px;
+  width: 312.5px;
+  max-height: 30rem;
+}
+.card .card-img {
+  width: 100%;
+  height: 234.375px;
+  background-color: #f1f1f1;
+  overflow: hidden;
+}
+.card .card-img img {
+  width: 100%;
+  transform: scale(1);
+  transition: all 0.5s;
+}
+.card .card-text {
+  width: 100%;
+  padding: 26.04166667px;
+}
+.card:hover img {
+  transform: scale(1.1);
+}
