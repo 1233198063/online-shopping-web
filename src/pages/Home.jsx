@@ -34,9 +34,7 @@ export default function Home() {
           <h2>Featured Products</h2>
           <NavLink to={"/featured"}>See All</NavLink>
         </div>
-        <div className="product-display-grid">
-          <FeaturedProducts></FeaturedProducts>
-        </div>
+        <FeaturedProducts></FeaturedProducts>
       </div>
 
       <div className="display">
@@ -44,9 +42,7 @@ export default function Home() {
           <h2>Recommended Products</h2>
           <NavLink to={"/recommended"}>See All</NavLink>
         </div>
-        <div className="product-display-grid">
-          <RecommendedProducts></RecommendedProducts>
-        </div>
+        <RecommendedProducts></RecommendedProducts>
       </div>
     </div>
   );

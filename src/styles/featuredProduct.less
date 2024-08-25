@@ -12,11 +12,19 @@
 @margin-small: (1500px / @vw);
 @margin-big: (3000px / @vw);
 
+// .products-display {
+//   width: 100%;
+//   height: auto;
+//   display: flex;
+//   flex-wrap: wrap;
+//   gap: (400px / @vw);
+// }
+
 .products-display {
   width: 100%;
   height: auto;
-  display: flex;
-  flex-wrap: wrap;
-  gap: (400px / @vw);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(2.6*@margin-big, 1fr));
+  grid-gap: @padding-large;
 }
 

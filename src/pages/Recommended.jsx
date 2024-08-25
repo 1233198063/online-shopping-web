@@ -18,8 +18,9 @@ export default function Recommended() {
           />
         </div>
       </div>
-      <RecommendedProducts></RecommendedProducts>
+      <div className="display">
+        <RecommendedProducts></RecommendedProducts>
+      </div>
     </div>
   );
 }
- 

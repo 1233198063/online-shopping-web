@@ -1,8 +1,7 @@
-import React, { useState, useEffect }  from "react";
+import React, { useState, useEffect } from "react";
 import FeaturedProducts from "../components/FeaturedProducts";
 
 export default function Featured() {
-  
   return (
     <div className="main-content">
       <div className="banner">
@@ -19,7 +18,9 @@ export default function Featured() {
           />
         </div>
       </div>
-      <FeaturedProducts></FeaturedProducts>
+      <div className="display">
+        <FeaturedProducts></FeaturedProducts>
+      </div>
     </div>
   );
 }
