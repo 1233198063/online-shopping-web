@@ -1,7 +1,7 @@
 .card {
-  border: 1px solid #ccc;
+  border: 1.04166667px solid #ccc;
   padding: 0px;
-  width: 312.5px;
+  width: 437.5px;
   max-height: 30rem;
 }
 .card .card-img {
@@ -17,7 +17,17 @@
 }
 .card .card-text {
   width: 100%;
-  padding: 26.04166667px;
+  padding: 0px 26.04166667px;
+}
+.card .card-text h2 {
+  margin-bottom: 0px;
+}
+.card .card-text p {
+  font-style: italic;
+  color: #818181;
+  font-size: 15.625px;
+  font-weight: 700;
+  margin-top: 0px;
 }
 .card:hover img {
   transform: scale(1.1);

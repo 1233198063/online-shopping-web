@@ -1,12 +1,7 @@
 .products-display {
   width: 100%;
   height: auto;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(156.25px, 1fr));
-  grid-gap: 10.41666667px;
-}
-@media (max-width: 2260px) {
-  .products-display {
-    grid-template-columns: repeat(auto-fill minmax(100%, 1fr));
-  }
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20.83333333px;
 }

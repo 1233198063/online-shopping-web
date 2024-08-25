@@ -13,9 +13,9 @@
 @margin-big: (3000px / @vw);
 
 .card {
-  border: 1px solid #ccc;
+  border: @border-width solid #ccc;
   padding: 0px;
-  width: 2 * @margin-big;
+  width: 2.8 * @margin-big;
   max-height: 30rem;
 //   margin: @padding-large;
 
@@ -34,7 +34,19 @@
 
   .card-text {
     width: 100%;
-    padding: @padding-large;
+    padding: 0px @padding-large;
+
+    h2 {
+      margin-bottom: 0px;
+    }
+
+    p {
+      font-style: italic;
+      color: #818181;
+      font-size: @padding-big;
+      font-weight: 700;
+      margin-top: 0px;
+    }
   }
 }
 
