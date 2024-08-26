@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
-import ProductCard from "../components/ProductCard";
+import ShopCard from "./ShopCard";
+
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { getFirestore } from "firebase/firestore";
 import { app } from "../service/config";
+import "../styles/shopProduct.css";
 
 export default function ShopProducts() {
   const db = getFirestore(app);
@@ -31,10 +33,10 @@ export default function ShopProducts() {
   }, []);
 
   return (
-    <div style={{ display: "flex", flexWrap: "wrap", gap: "20px" }}>
+    <div className="shop-display">
       {products.length > 0 ? (
         products.map((product) => (
-          <ProductCard key={product.id} product={product} />
+          <ShopCard key={product.id} product={product} />
         ))
       ) : (
         <p>No products found.</p>

@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from "react";
 import FeaturedProducts from "../components/FeaturedProducts";
 
 export default function Featured() {

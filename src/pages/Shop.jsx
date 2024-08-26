@@ -1,12 +1,14 @@
-import React from 'react'
-import { Link, Outlet} from 'react-router-dom'
-import ShopProducts from '../components/ShopProducts'
+import React from "react";
+import { Link, Outlet } from "react-router-dom";
+import ShopProducts from "../components/ShopProducts";
 
 export default function Shop() {
-    
   return (
     <div className="main-content">
-      <ShopProducts></ShopProducts>
+      <div className="display">
+        <ShopProducts></ShopProducts>
+      </div>
+
       {/* <ul>
         {
             productsList.map(item => {
@@ -20,5 +22,5 @@ export default function Shop() {
       </ul> */}
       <Outlet></Outlet>
     </div>
-  )
+  );
 }

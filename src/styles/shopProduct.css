@@ -1,0 +1,7 @@
+.shop-display {
+  width: 100%;
+  height: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(156.25px, 1fr));
+  grid-gap: 26.04166667px;
+}
