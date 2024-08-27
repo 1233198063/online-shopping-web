@@ -3,11 +3,13 @@ import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { collection, addDoc } from "firebase/firestore";
 import { getFirestore } from "firebase/firestore";
 import { app } from '../service/config';
+import { useNavigate } from 'react-router-dom';
 
 export default function Register() {
     const auth = getAuth();
 
     const db = getFirestore(app);
+    const navigate = useNavigate();
 
     const [uname, setUname] = useState()
     const [email, setEmail] = useState()
@@ -44,12 +46,12 @@ export default function Register() {
             })
             console.log("Document written with ID: ", docRef.id);
 
-            // Programmatic navigation to login
+            // Navigation to login
+            navigate('/login'); // Navigate to login after successful registration
 
         } catch (error) {
             const errorCode = error.code;
             const errorMessage = error.message;
-            // ..
             console.error(errorCode, errorMessage);
         }
     }

@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, NavLink } from "react-router-dom";
 import { doc, getDoc } from "firebase/firestore";
 import { getFirestore } from "firebase/firestore";
-import { app } from "../service/config"; // Import your Firebase app config
+import { app } from "../service/config";
 
-const ProductDetails = () => {
+import RecommendedProducts from "./RecommendedProducts";
+
+const ProductDetails = ({cartItems, handleAddToCart, handleRemoveFromCart, isItemInCart}) => {
   const { id } = useParams(); // Get the product ID from the URL
   const db = getFirestore(app);
 
@@ -12,6 +14,7 @@ const ProductDetails = () => {
   const [loading, setLoading] = useState(true); // State to manage loading state
   const [error, setError] = useState(null); // State to manage errors
   const [mainImage, setMainImage] = useState(null); // State to manage the main image
+  
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -59,6 +62,14 @@ const ProductDetails = () => {
     imageCollection,
   } = product;
 
+  const handleButtonClick = () => {
+    if (isItemInCart(product)) {
+      handleRemoveFromCart(product);
+    } else {
+      handleAddToCart(product);
+    }
+  };
+
   return (
     <div>
       <div style={{ width: "20%", textAlign: "center" }}>
@@ -75,7 +86,7 @@ const ProductDetails = () => {
         </Link>
       </div>
 
-      <div  style={{ display: "flex", gap: "40px", padding: "20px" }}>
+      <div style={{ display: "flex", gap: "40px", padding: "20px" }}>
         {/* Left Section with small additional Images */}
         <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
           {imageCollection.map((img) => (
@@ -156,6 +167,7 @@ const ProductDetails = () => {
             </p>
 
             <button
+              onClick={handleButtonClick}
               style={{
                 backgroundColor: "#000",
                 color: "#fff",
@@ -168,9 +180,18 @@ const ProductDetails = () => {
               }}
             >
               Add To Basket
+              {/* {isItemInCart(product) ? "Remove From Basket" : "Add To Basket"} */}
             </button>
           </div>
         </div>
+      </div>
+
+      <div className="display">
+        <div className="display-header">
+          <h2>Recommended Products</h2>
+          <NavLink to={"/recommended"}>See All</NavLink>
+        </div>
+        <RecommendedProducts></RecommendedProducts>
       </div>
     </div>
   );

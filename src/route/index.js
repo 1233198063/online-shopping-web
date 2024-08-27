@@ -4,6 +4,8 @@ import Recommended from "../pages/Recommended"
 import Shop from "../pages/Shop"
 import Detail from "../pages/Detail"
 import ProductDetails from "../components/ProductDetails"
+import Register from "../components/Register"
+import Login from "../components/Login"
 
 const routes = [
     {
@@ -35,6 +37,14 @@ const routes = [
     {
         path:'/product/:id',
         element:<ProductDetails></ProductDetails>
+    },
+    {
+        path:'/register',
+        element:<Register></Register>
+    },
+    {
+        path:'/login',
+        element:<Login></Login>
     }
 ]
 

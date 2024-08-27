@@ -1,0 +1,118 @@
+@vw: 19.2vw;
+
+@border-width: (20px / @vw);
+@border-width-big: (25px / @vw);
+
+@padding-large: (500px / @vw);
+@padding-big: (300px / @vw);
+@padding-small: (200px / @vw);
+@padding-mini: (100px / @vw);
+
+@margin-mini: (1000px / @vw);
+@margin-small: (1500px / @vw);
+@margin-big: (3000px / @vw);
+
+.cart-panel {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 4 * @margin-big;
+    height: 100%;
+    background-color: #fff;
+    box-shadow: -@border-width 0 5 * @border-width rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+
+    .cart-header {
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #ccc;
+    }
+    
+    .cart-content {
+      flex-grow: 1;
+      padding: 20px;
+      overflow-y: auto;
+
+      .cart-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 0;
+        border-bottom: 1px solid #eee;
+      }
+      
+    }
+  }
+  
+  .cart-overlay.open .cart-panel {
+    transform: translateX(0);
+  }
+  
+  
+  
+  
+  .cart-item img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+  }
+  
+  .cart-item-info {
+    flex-grow: 1;
+    padding-left: 20px;
+  }
+  
+  .cart-item-price {
+    font-weight: bold;
+  }
+  
+  .color-box {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+  }
+  
+  .cart-footer {
+    padding: 20px;
+    border-top: 1px solid #ccc;
+    text-align: right;
+  }
+  
+  .checkout-button {
+    background-color: #000;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 100%;
+    margin-top: 10px;
+  }
+  
+  .cart-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 900;
+  }
+  
+  /* Shopping bag icon */
+  .shopping-bag-icon {
+    font-size: 24px;
+    cursor: pointer;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1001;
+  }
+  
