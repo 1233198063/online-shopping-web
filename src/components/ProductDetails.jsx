@@ -3,12 +3,17 @@ import { useParams, Link, NavLink } from "react-router-dom";
 import { doc, getDoc } from "firebase/firestore";
 import { getFirestore } from "firebase/firestore";
 import { app } from "../service/config";
+import { useDispatch, useSelector } from "react-redux";
+import { addItemToCart, removeItemFromCart, isItemInCart } from "../store/cart";
 
 import RecommendedProducts from "./RecommendedProducts";
 
-const ProductDetails = ({cartItems, handleAddToCart, handleRemoveFromCart, isItemInCart}) => {
+const ProductDetails = () => {
+  // console.log({cartItems, handleAddToCart, handleRemoveFromCart, isItemInCart})
   const { id } = useParams(); // Get the product ID from the URL
   const db = getFirestore(app);
+  const dispatch = useDispatch();
+  const isInCart = useSelector(state => isItemInCart(state, id));
 
   const [product, setProduct] = useState(null); // State to store the product data
   const [loading, setLoading] = useState(true); // State to manage loading state
@@ -63,10 +68,10 @@ const ProductDetails = ({cartItems, handleAddToCart, handleRemoveFromCart, isIte
   } = product;
 
   const handleButtonClick = () => {
-    if (isItemInCart(product)) {
-      handleRemoveFromCart(product);
+    if (isInCart) {
+      dispatch(removeItemFromCart(product));
     } else {
-      handleAddToCart(product);
+      dispatch(addItemToCart(product));
     }
   };
 
@@ -95,7 +100,7 @@ const ProductDetails = ({cartItems, handleAddToCart, handleRemoveFromCart, isIte
               src={img.url}
               alt={`${name} additional`}
               style={{
-                width: "100%",
+                width: "100%",   
                 borderRadius: "8px",
                 cursor: "pointer",
                 border: "1px solid #ccc",
@@ -179,8 +184,8 @@ const ProductDetails = ({cartItems, handleAddToCart, handleRemoveFromCart, isIte
                 width: "100%",
               }}
             >
-              Add To Basket
-              {/* {isItemInCart(product) ? "Remove From Basket" : "Add To Basket"} */}
+              {/* Add To Basket */}
+              {isInCart ? "Remove From Basket" : "Add To Basket"}
             </button>
           </div>
         </div>

@@ -1,10 +1,23 @@
 // product card on shop page
 import React from "react";
+import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { addItemToCart, removeItemFromCart, isItemInCart } from "../store/cart";
+
 import "../styles/productCard.css";
-import { Link } from 'react-router-dom';
 
 const ShopCard = ({ product }) => {
-  const { brand, image, name, price } = product;
+  const { id, brand, image, name, price } = product;
+  const dispatch = useDispatch();
+  const isInCart = useSelector((state) => isItemInCart(state, id));
+
+  const handleButtonClick = () => {
+    if (isInCart) {
+      dispatch(removeItemFromCart(product));
+    } else {
+      dispatch(addItemToCart(product));
+    }
+  };
 
   return (
     <div className="shop-card">
@@ -17,6 +30,10 @@ const ShopCard = ({ product }) => {
           <p>{brand}</p>
           <h3>${price}</h3>
         </div>
+        <div className="shop-card-button" onClick={handleButtonClick}>
+          {isInCart ? "Remove from Basket" : "Add to Basket"}
+        </div>
+        {isInCart && <div className="checkmark">✔</div>}
       </Link>
     </div>
   );
