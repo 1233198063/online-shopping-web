@@ -87,7 +87,7 @@ const ProductDetails = () => {
             marginBottom: "20px",
           }}
         >
-          <span class="material-symbols-outlined">arrow_back</span> Back to Shop
+          <span className="material-symbols-outlined">arrow_back</span> Back to Shop
         </Link>
       </div>
 

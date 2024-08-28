@@ -8,6 +8,7 @@ import storage from "redux-persist/lib/storage";
 // Combine multiple reducers
 const reducers = combineReducers({
     counter: counterReducer,
+    cart: cartReducer, 
 })
 
 // persistent configuration
