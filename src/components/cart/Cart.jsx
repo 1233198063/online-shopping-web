@@ -1,13 +1,22 @@
 import React, { useState } from 'react';
+import { useSelector, useDispatch } from "react-redux";
+import { removeItemFromCart, clearCart, selectCartItems } from "../../store/cart";
 import '../../styles/cart.css';
 
-const Cart = ({ cartItems, onClose, onClear }) => {
+const Cart = ({ onClose }) => {
+  const cartItems = useSelector(selectCartItems);
+  const dispatch = useDispatch();
+
+  const handleClearCart = () => {
+    dispatch(clearCart());
+  };
+
   return (
     <div className="cart-panel">
       <div className="cart-header">
         <h2>My Basket ({cartItems.length} item{cartItems.length > 1 ? 's' : ''})</h2>
         <button onClick={onClose}>Close</button>
-        <button onClick={onClear}>Clear Basket</button>
+        <button onClick={handleClearCart}>Clear Basket</button>
       </div>
       <div className="cart-content">
         {cartItems.map((item, index) => (
@@ -19,18 +28,17 @@ const Cart = ({ cartItems, onClose, onClear }) => {
               <p>Size: {item.size} mm</p>
               <p>Color: <span style={{ backgroundColor: item.color }} className="color-box"></span></p>
             </div>
-            <div className="cart-item-price">${item.price.toFixed(2)}</div>
-            <button className="remove-button">X</button>
+            <div className="cart-item-price">${(item.price * item.quantity).toFixed(2)}</div>
+            <button className="remove-button" onClick={() => dispatch(removeItemFromCart(item))}>X</button>
           </div>
         ))}
       </div>
       <div className="cart-footer">
         <p>Subtotal Amount:</p>
-        <h3>${cartItems.reduce((total, item) => total + item.price, 0).toFixed(2)}</h3>
+        <h3>${cartItems.reduce((total, item) => total + item.price * item.quantity, 0).toFixed(2)}</h3>
         <button className="checkout-button">CHECK OUT</button>
       </div>
     </div>
   );
 };
-
 export default Cart;

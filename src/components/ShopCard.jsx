@@ -25,16 +25,16 @@ const ShopCard = ({ product }) => {
         <div className="shop-card-img">
           <img src={image} alt={name} />
         </div>
+        {isInCart && <div className="checkmark">✔</div>}
         <div className="shop-card-text">
           <h2>{name}</h2>
           <p>{brand}</p>
           <h3>${price}</h3>
         </div>
-        <div className="shop-card-button" onClick={handleButtonClick}>
-          {isInCart ? "Remove from Basket" : "Add to Basket"}
-        </div>
-        {isInCart && <div className="checkmark">✔</div>}
       </Link>
+      <div className="shop-card-button" onClick={handleButtonClick}>
+        {isInCart ? "Remove from Basket" : "Add to Basket"}
+      </div>
     </div>
   );
 };
