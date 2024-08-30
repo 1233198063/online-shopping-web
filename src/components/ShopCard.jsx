@@ -9,13 +9,40 @@ import "../styles/productCard.css";
 const ShopCard = ({ product }) => {
   const { id, brand, image, name, price } = product;
   const dispatch = useDispatch();
-  const isInCart = useSelector((state) => isItemInCart(state, id));
+  const isInCart = useSelector((state) =>
+    state.cart.items.some(
+      (item) =>
+        item.id === id &&
+        item.size === product.sizes[0] && // Check default size
+        item.color === product.availableColors[0] // Check default color
+    )
+  );
+
+  const handleAddToCart = () => {
+    dispatch(
+      addItemToCart({
+        ...product,
+        size: product.sizes[0], // Default to first size
+        color: product.availableColors[0], // Default to first color
+      })
+    );
+  };
+
+  const handleRemoveFromCart = () => {
+    dispatch(
+      removeItemFromCart({
+        ...product,
+        size: product.sizes[0], // Ensure default if removed
+        color: product.availableColors[0], // Ensure default if removed
+      })
+    );
+  };
 
   const handleButtonClick = () => {
     if (isInCart) {
-      dispatch(removeItemFromCart(product));
+      handleRemoveFromCart();
     } else {
-      dispatch(addItemToCart(product));
+      handleAddToCart();
     }
   };
 

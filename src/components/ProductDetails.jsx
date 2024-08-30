@@ -4,7 +4,7 @@ import { doc, getDoc } from "firebase/firestore";
 import { getFirestore } from "firebase/firestore";
 import { app } from "../service/config";
 import { useDispatch, useSelector } from "react-redux";
-import { addItemToCart, removeItemFromCart, isItemInCart } from "../store/cart";
+import { addItemToCart, removeItemFromCart } from "../store/cart";
 
 import RecommendedProducts from "./RecommendedProducts";
 
