@@ -19,6 +19,8 @@ const ProductDetails = () => {
   const [loading, setLoading] = useState(true); // State to manage loading state
   const [error, setError] = useState(null); // State to manage errors
   const [mainImage, setMainImage] = useState(null); // State to manage the main image
+  const [selectedSize, setSelectedSize] = useState(""); // State to manage the size
+  const [selectedColor, setSelectedColor] = useState(""); // State to manage the color
   
 
   useEffect(() => {
@@ -67,11 +69,27 @@ const ProductDetails = () => {
     imageCollection,
   } = product;
 
+  const handleAddToCart = () => {
+    dispatch(addItemToCart({
+      ...product,
+      size: selectedSize,
+      color: selectedColor,
+    }));
+  };
+
+  const handleRemoveFromCart = () => {
+    dispatch(removeItemFromCart({
+      ...product,
+      size: selectedSize,
+      color: selectedColor,
+    }));
+  };
+
   const handleButtonClick = () => {
     if (isInCart) {
-      dispatch(removeItemFromCart(product));
+      handleRemoveFromCart();
     } else {
-      dispatch(addItemToCart(product));
+      handleAddToCart();
     }
   };
 
@@ -139,6 +157,8 @@ const ProductDetails = () => {
               Lens Width and Frame Size
             </p>
             <select
+            value={selectedSize}
+            onChange={(e) => setSelectedSize(e.target.value)}
               style={{ padding: "10px", width: "100%", marginBottom: "20px" }}
             >
               {sizes.map((size) => (
@@ -158,9 +178,10 @@ const ProductDetails = () => {
                     width: "40px",
                     height: "40px",
                     borderRadius: "50%",
-                    border: "2px solid #000",
+                    border: selectedColor === color ? "2px solid #000" : "2px solid #ccc",
                     cursor: "pointer",
                   }}
+                  onClick={() => setSelectedColor(color)}
                 />
               ))}
             </div>
@@ -184,7 +205,6 @@ const ProductDetails = () => {
                 width: "100%",
               }}
             >
-              {/* Add To Basket */}
               {isInCart ? "Remove From Basket" : "Add To Basket"}
             </button>
           </div>

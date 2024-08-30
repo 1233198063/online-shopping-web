@@ -9,10 +9,16 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
     addItemToCart: (state, action) => {
-      state.items.push(action.payload);
+      const itemInCart = state.items.find(item => item.id === action.payload.id && item.size === action.payload.size && item.color === action.payload.color);
+      if (itemInCart) {
+        itemInCart.quantity += 1;
+      } else {
+        state.items.push({ ...action.payload, quantity: 1 });
+      }
     },
     removeItemFromCart: (state, action) => {
-      state.items = state.items.filter((item) => item.id !== action.payload.id);
+      state.items = state.items.filter(
+        item => item.id !== action.payload.id || item.size !== action.payload.size || item.color !== action.payload.color);
     },
     clearCart: state => {
       state.items = [];
