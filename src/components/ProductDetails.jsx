@@ -9,11 +9,10 @@ import { addItemToCart, removeItemFromCart, isItemInCart } from "../store/cart";
 import RecommendedProducts from "./RecommendedProducts";
 
 const ProductDetails = () => {
-  // console.log({cartItems, handleAddToCart, handleRemoveFromCart, isItemInCart})
   const { id } = useParams(); // Get the product ID from the URL
   const db = getFirestore(app);
   const dispatch = useDispatch();
-  const isInCart = useSelector(state => isItemInCart(state, id));
+  const cartItems = useSelector((state) => state.cart.items);
 
   const [product, setProduct] = useState(null); // State to store the product data
   const [loading, setLoading] = useState(true); // State to manage loading state
@@ -21,7 +20,6 @@ const ProductDetails = () => {
   const [mainImage, setMainImage] = useState(null); // State to manage the main image
   const [selectedSize, setSelectedSize] = useState(""); // State to manage the size
   const [selectedColor, setSelectedColor] = useState(""); // State to manage the color
-  
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -30,7 +28,11 @@ const ProductDetails = () => {
         const productSnap = await getDoc(productRef);
 
         if (productSnap.exists()) {
-          setProduct({ id: productSnap.id, ...productSnap.data() }); // Set the product data
+          const productData = productSnap.data();
+          setProduct({ id: productSnap.id, ...productData }); // Set the product data
+          setMainImage(productData.image);
+          setSelectedSize(productData.sizes[0]); // Default to first size
+          setSelectedColor(productData.availableColors[0]); // Default to first color
           setLoading(false);
         } else {
           setError("Product not found");
@@ -44,6 +46,13 @@ const ProductDetails = () => {
 
     fetchProduct();
   }, [id, db]);
+
+  const isInCart = cartItems.some(
+    (item) =>
+      item.id === id &&
+      item.size === selectedSize &&
+      item.color === selectedColor
+  );
 
   if (loading) {
     return <div>Loading...</div>;
@@ -70,19 +79,23 @@ const ProductDetails = () => {
   } = product;
 
   const handleAddToCart = () => {
-    dispatch(addItemToCart({
-      ...product,
-      size: selectedSize,
-      color: selectedColor,
-    }));
+    dispatch(
+      addItemToCart({
+        ...product,
+        size: selectedSize || product.sizes[0], // Default to first size if not selected
+        color: selectedColor || product.availableColors[0], // Default to first color if not selected
+      })
+    );
   };
 
   const handleRemoveFromCart = () => {
-    dispatch(removeItemFromCart({
-      ...product,
-      size: selectedSize,
-      color: selectedColor,
-    }));
+    dispatch(
+      removeItemFromCart({
+        ...product,
+        size: selectedSize || product.sizes[0], // Ensure default if removed
+        color: selectedColor || product.availableColors[0], // Ensure default if removed
+      })
+    );
   };
 
   const handleButtonClick = () => {
@@ -105,7 +118,8 @@ const ProductDetails = () => {
             marginBottom: "20px",
           }}
         >
-          <span className="material-symbols-outlined">arrow_back</span> Back to Shop
+          <span className="material-symbols-outlined">arrow_back</span> Back to
+          Shop
         </Link>
       </div>
 
@@ -118,7 +132,7 @@ const ProductDetails = () => {
               src={img.url}
               alt={`${name} additional`}
               style={{
-                width: "100%",   
+                width: "100%",
                 borderRadius: "8px",
                 cursor: "pointer",
                 border: "1px solid #ccc",
@@ -157,8 +171,8 @@ const ProductDetails = () => {
               Lens Width and Frame Size
             </p>
             <select
-            value={selectedSize}
-            onChange={(e) => setSelectedSize(e.target.value)}
+              value={selectedSize}
+              onChange={(e) => setSelectedSize(e.target.value)}
               style={{ padding: "10px", width: "100%", marginBottom: "20px" }}
             >
               {sizes.map((size) => (
@@ -178,7 +192,10 @@ const ProductDetails = () => {
                     width: "40px",
                     height: "40px",
                     borderRadius: "50%",
-                    border: selectedColor === color ? "2px solid #000" : "2px solid #ccc",
+                    border:
+                      selectedColor === color
+                        ? "2px solid #000"
+                        : "2px solid #ccc",
                     cursor: "pointer",
                   }}
                   onClick={() => setSelectedColor(color)}
