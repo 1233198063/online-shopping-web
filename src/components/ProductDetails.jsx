@@ -5,6 +5,8 @@ import { getFirestore } from "firebase/firestore";
 import { app } from "../service/config";
 import { useDispatch, useSelector } from "react-redux";
 import { addItemToCart, removeItemFromCart } from "../store/cart";
+import { Alert } from "@mui/material";
+import CheckIcon from '@mui/icons-material/Check';
 
 import RecommendedProducts from "./RecommendedProducts";
 
@@ -12,7 +14,7 @@ const ProductDetails = () => {
   const { id } = useParams(); // Get the product ID from the URL
   const db = getFirestore(app);
   const dispatch = useDispatch();
-  const cartItems = useSelector((state) => state.cart.items);
+  // const cartItems = useSelector((state) => state.cart.items);
 
   const [product, setProduct] = useState(null); // State to store the product data
   const [loading, setLoading] = useState(true); // State to manage loading state
@@ -20,6 +22,9 @@ const ProductDetails = () => {
   const [mainImage, setMainImage] = useState(null); // State to manage the main image
   const [selectedSize, setSelectedSize] = useState(""); // State to manage the size
   const [selectedColor, setSelectedColor] = useState(""); // State to manage the color
+
+  const [showNotification, setShowNotification] = useState(false);
+  const [notificationMessage, setNotificationMessage] = useState("");
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -47,9 +52,12 @@ const ProductDetails = () => {
     fetchProduct();
   }, [id, db]);
 
-  const isInCart = cartItems.some(
+  const cartItems = useSelector((state) => state.cart.items);
+
+  // Determine if the item is in the cart
+  const isInCart = product && cartItems.some(
     (item) =>
-      item.id === id &&
+      item.id === product.id &&
       item.size === selectedSize &&
       item.color === selectedColor
   );
@@ -68,7 +76,6 @@ const ProductDetails = () => {
 
   // Destructure the product object
   const {
-    // image,
     name,
     brand,
     price,
@@ -78,6 +85,8 @@ const ProductDetails = () => {
     imageCollection,
   } = product;
 
+  
+
   const handleAddToCart = () => {
     dispatch(
       addItemToCart({
@@ -86,6 +95,9 @@ const ProductDetails = () => {
         color: selectedColor || product.availableColors[0], // Default to first color if not selected
       })
     );
+    setNotificationMessage("Item added to basket");
+    setShowNotification(true);
+    setTimeout(() => setShowNotification(false), 2000); // Hide notification after 2 seconds
   };
 
   const handleRemoveFromCart = () => {
@@ -96,6 +108,9 @@ const ProductDetails = () => {
         color: selectedColor || product.availableColors[0], // Ensure default if removed
       })
     );
+    setNotificationMessage("Item removed from basket");
+    setShowNotification(true);
+    setTimeout(() => setShowNotification(false), 2000); // Hide notification after 2 seconds
   };
 
   const handleButtonClick = () => {
@@ -224,6 +239,7 @@ const ProductDetails = () => {
             >
               {isInCart ? "Remove From Basket" : "Add To Basket"}
             </button>
+
           </div>
         </div>
       </div>
@@ -235,6 +251,16 @@ const ProductDetails = () => {
         </div>
         <RecommendedProducts></RecommendedProducts>
       </div>
+
+      {showNotification && (
+        <Alert
+          className="alert"
+          icon={<CheckIcon fontSize="inherit" />}
+          severity={isInCart ? "success" : "warning"}
+        >
+          {notificationMessage}
+        </Alert>
+      )}
     </div>
   );
 };

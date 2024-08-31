@@ -9,7 +9,12 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
     addItemToCart: (state, action) => {
-      const itemInCart = state.items.find(item => item.id === action.payload.id && item.size === action.payload.size && item.color === action.payload.color);
+      const itemInCart = state.items.find(
+        (item) =>
+          item.id === action.payload.id &&
+          item.size === action.payload.size &&
+          item.color === action.payload.color
+      );
       if (itemInCart) {
         itemInCart.quantity += 1;
       } else {
@@ -18,19 +23,26 @@ const cartSlice = createSlice({
     },
     removeItemFromCart: (state, action) => {
       state.items = state.items.filter(
-        item => item.id !== action.payload.id || item.size !== action.payload.size || item.color !== action.payload.color);
+        (item) =>
+          item.id !== action.payload.id ||
+          item.size !== action.payload.size ||
+          item.color !== action.payload.color
+      );
     },
-    clearCart: state => {
+    clearCart: (state) => {
       state.items = [];
     },
   },
 });
 
-export const { addItemToCart, removeItemFromCart, clearCart } = cartSlice.actions;
+export const { addItemToCart, removeItemFromCart, clearCart } =
+  cartSlice.actions;
 
 export const selectCartItems = (state) => state.cart.items;
 export const isItemInCart = (state, itemId) =>
   state.cart.items.some((item) => item.id === itemId);
+export const selectTotalQuantity = (state) =>
+  state.cart.items.reduce((total, item) => total + item.quantity, 0);
 
 const cartReducer = cartSlice.reducer;
 export default cartReducer;

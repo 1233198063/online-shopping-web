@@ -1,3 +1,6 @@
+.layout-div {
+  position: relative;
+}
 .nav-bar {
   width: 100%;
   display: flex;
@@ -79,16 +82,12 @@
   justify-content: center;
   font-size: 12px;
 }
-/* Notification */
-.notification {
+/* alert Notification */
+.alert {
   position: fixed;
-  top: 20px;
-  right: 20px;
-  background-color: green;
-  color: white;
-  padding: 10px 20px;
-  border-radius: 5px;
-  z-index: 1000;
+  top: 78.125px;
+  right: 78.125px;
+  z-index: 10;
 }
 .footer {
   background-color: #f0f0f0;

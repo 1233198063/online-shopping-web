@@ -1,19 +1,34 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { NavLink, useRoutes, useNavigate } from "react-router-dom";
 import routes from "../route";
 
 import Cart from "../components/cart/Cart";
-import ProductDetails from "../components/ProductDetails";
+
+// import from @mui
+import Badge from "@mui/material/Badge";
+import IconButton from "@mui/material/IconButton";
+import Alert from "@mui/material/Alert";
+import CheckIcon from "@mui/icons-material/Check";
+
+import {
+  addItemToCart,
+  selectCartItems,
+  selectTotalQuantity,
+} from "../store/cart"; // Import the selector
 
 import "../styles/layout.css";
 
 export default function Layout() {
   const element = useRoutes(routes);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
+  const totalQuantity = useSelector(selectTotalQuantity);
   const [cartItems, setCartItems] = useState([]);
   const [isCartOpen, setIsCartOpen] = useState(false); // State to manage cart visibility
   const [showNotification, setShowNotification] = useState(false);
+  const [notificationMessage, setNotificationMessage] = useState("");
   const [currentPage, setCurrentPage] = useState("");
   // Track current page ('' for general, 'register' for RegisterPage, 'login' for LoginPage)
 
@@ -30,18 +45,15 @@ export default function Layout() {
     setCartItems([]);
   };
 
-  const handleAddToCart = (item) => {
-    setCartItems([...cartItems, item]);
-    setShowNotification(true);
-    setTimeout(() => setShowNotification(false), 2000); // Hide notification after 2 seconds
-  };
-
-  const handleRemoveFromCart = (item) => {
-    setCartItems(cartItems.filter((cartItem) => cartItem.id !== item.id));
-  };
-
-  const isItemInCart = (item) =>
-    cartItems.some((cartItem) => cartItem.id === item.id);
+  function notificationsLabel(totalQuantity) {
+    if (totalQuantity === 0) {
+      return "no notifications";
+    }
+    if (totalQuantity > 99) {
+      return "more than 99 notifications";
+    }
+    return `${totalQuantity} notifications`;
+  }
 
   // sign up and sign in
   const handleSignUpClick = () => {
@@ -55,7 +67,7 @@ export default function Layout() {
   };
 
   return (
-    <div>
+    <div className="layout-div">
       <nav className="nav-bar">
         <a href="/" className="web-icon">
           <div className="icon-img"></div>
@@ -78,26 +90,23 @@ export default function Layout() {
             type="text"
             placeholder="Search product..."
           />
-          <span
-            className="material-symbols-outlined shopping-bag"
-            onClick={handleOpenCart} // Opens the cart on click
-            style={{ cursor: "pointer" }}
+          <IconButton
+            className="shopping-bag"
+            aria-label={notificationsLabel(totalQuantity)}
           >
-            shopping_bag
-            {cartItems.length > 0 && (
-              <div className="cart-badge">{cartItems.length}</div>
-            )}
-          </span>
+            <Badge badgeContent={totalQuantity} color="secondary">
+              <span
+                className="material-symbols-outlined"
+                onClick={handleOpenCart} // Opens the cart on click
+                style={{ cursor: "pointer" }}
+              >
+                shopping_bag
+              </span>
+            </Badge>
+          </IconButton>
         </div>
 
         <div className="action-buttons">
-          {/* <a className="button button-small" href="">
-            Sign Up
-          </a>
-          <a className="button button-small button-white" href="">
-            Sign In
-          </a> */}
-
           {currentPage !== "register" && (
             <button className="button button-small" onClick={handleSignUpClick}>
               Sign Up
@@ -114,15 +123,7 @@ export default function Layout() {
         </div>
       </nav>
 
-      {/* {element} */}
-      
-      {/* Pass cart-related props to the ProductDetails component */}
-      {element ? React.cloneElement(element, {
-        cartItems,
-        handleAddToCart,
-        handleRemoveFromCart,
-        isItemInCart
-      }) : null}
+      {element}
 
       {/* Cart overlay */}
       <div className={`cart-overlay ${isCartOpen ? "open" : ""}`}>
@@ -136,11 +137,6 @@ export default function Layout() {
       {/* Backdrop overlay to close cart when clicked */}
       {isCartOpen && (
         <div className="cart-backdrop" onClick={handleCloseCart}></div>
-      )}
-
-      {/* Notification */}
-      {showNotification && (
-        <div className="notification">Item added to the basket</div>
       )}
 
       <footer className="footer">
