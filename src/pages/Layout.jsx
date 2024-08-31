@@ -1,5 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import {
+  selectTotalQuantity,
+  hideNotification,
+  selectNotification,
+} from "../store/cart";
 import { NavLink, useRoutes, useNavigate } from "react-router-dom";
 import routes from "../route";
 
@@ -11,24 +16,19 @@ import IconButton from "@mui/material/IconButton";
 import Alert from "@mui/material/Alert";
 import CheckIcon from "@mui/icons-material/Check";
 
-import {
-  addItemToCart,
-  selectCartItems,
-  selectTotalQuantity,
-} from "../store/cart"; // Import the selector
-
 import "../styles/layout.css";
 
 export default function Layout() {
   const element = useRoutes(routes);
   const navigate = useNavigate();
+
   const dispatch = useDispatch();
 
+  const notification = useSelector(selectNotification);
   const totalQuantity = useSelector(selectTotalQuantity);
+
   const [cartItems, setCartItems] = useState([]);
   const [isCartOpen, setIsCartOpen] = useState(false); // State to manage cart visibility
-  const [showNotification, setShowNotification] = useState(false);
-  const [notificationMessage, setNotificationMessage] = useState("");
   const [currentPage, setCurrentPage] = useState("");
   // Track current page ('' for general, 'register' for RegisterPage, 'login' for LoginPage)
 
@@ -54,6 +54,15 @@ export default function Layout() {
     }
     return `${totalQuantity} notifications`;
   }
+
+  useEffect(() => {
+    if (notification && notification.show) {
+      const timer = setTimeout(() => {
+        dispatch(hideNotification());
+      }, 2000);
+      return () => clearTimeout(timer);
+    }
+  }, [notification, dispatch]);
 
   // sign up and sign in
   const handleSignUpClick = () => {
@@ -124,6 +133,16 @@ export default function Layout() {
       </nav>
 
       {element}
+
+      {notification && notification.show && (
+        <Alert
+          className="alert"
+          icon={<CheckIcon fontSize="inherit" />}
+          severity={notification.severity}
+        >
+          {notification.message}
+        </Alert>
+      )}
 
       {/* Cart overlay */}
       <div className={`cart-overlay ${isCartOpen ? "open" : ""}`}>

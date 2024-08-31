@@ -4,9 +4,7 @@ import { doc, getDoc } from "firebase/firestore";
 import { getFirestore } from "firebase/firestore";
 import { app } from "../service/config";
 import { useDispatch, useSelector } from "react-redux";
-import { addItemToCart, removeItemFromCart } from "../store/cart";
-import { Alert } from "@mui/material";
-import CheckIcon from '@mui/icons-material/Check';
+import { addItemToCart, removeItemFromCart, selectCartItems } from "../store/cart";
 
 import RecommendedProducts from "./RecommendedProducts";
 
@@ -14,7 +12,6 @@ const ProductDetails = () => {
   const { id } = useParams(); // Get the product ID from the URL
   const db = getFirestore(app);
   const dispatch = useDispatch();
-  // const cartItems = useSelector((state) => state.cart.items);
 
   const [product, setProduct] = useState(null); // State to store the product data
   const [loading, setLoading] = useState(true); // State to manage loading state
@@ -23,8 +20,8 @@ const ProductDetails = () => {
   const [selectedSize, setSelectedSize] = useState(""); // State to manage the size
   const [selectedColor, setSelectedColor] = useState(""); // State to manage the color
 
-  const [showNotification, setShowNotification] = useState(false);
-  const [notificationMessage, setNotificationMessage] = useState("");
+  // const [showNotification, setShowNotification] = useState(false);
+  // const [notificationMessage, setNotificationMessage] = useState("");
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -52,7 +49,7 @@ const ProductDetails = () => {
     fetchProduct();
   }, [id, db]);
 
-  const cartItems = useSelector((state) => state.cart.items);
+  const cartItems = useSelector(selectCartItems);
 
   // Determine if the item is in the cart
   const isInCart = product && cartItems.some(
@@ -61,6 +58,14 @@ const ProductDetails = () => {
       item.size === selectedSize &&
       item.color === selectedColor
   );
+
+  const handleButtonClick = () => {
+    if (isInCart) {
+      dispatch(removeItemFromCart({ ...product, size: selectedSize, color: selectedColor }));
+    } else {
+      dispatch(addItemToCart({ ...product, size: selectedSize, color: selectedColor }));
+    }
+  };
 
   if (loading) {
     return <div>Loading...</div>;
@@ -75,51 +80,41 @@ const ProductDetails = () => {
   }
 
   // Destructure the product object
-  const {
-    name,
-    brand,
-    price,
-    description,
-    sizes,
-    availableColors,
-    imageCollection,
-  } = product;
+  // const {
+  //   name,
+  //   brand,
+  //   price,
+  //   description,
+  //   sizes,
+  //   availableColors,
+  //   imageCollection,
+  // } = product;
 
-  
+  // const handleAddToCart = () => {
+  //   dispatch(
+  //     addItemToCart({
+  //       ...product,
+  //       size: selectedSize || product.sizes[0], // Default to first size if not selected
+  //       color: selectedColor || product.availableColors[0], // Default to first color if not selected
+  //     })
+  //   );
+  //   setNotificationMessage("Item added to basket");
+  //   setShowNotification(true);
+  //   setTimeout(() => setShowNotification(false), 2000); // Hide notification after 2 seconds
+  // };
 
-  const handleAddToCart = () => {
-    dispatch(
-      addItemToCart({
-        ...product,
-        size: selectedSize || product.sizes[0], // Default to first size if not selected
-        color: selectedColor || product.availableColors[0], // Default to first color if not selected
-      })
-    );
-    setNotificationMessage("Item added to basket");
-    setShowNotification(true);
-    setTimeout(() => setShowNotification(false), 2000); // Hide notification after 2 seconds
-  };
-
-  const handleRemoveFromCart = () => {
-    dispatch(
-      removeItemFromCart({
-        ...product,
-        size: selectedSize || product.sizes[0], // Ensure default if removed
-        color: selectedColor || product.availableColors[0], // Ensure default if removed
-      })
-    );
-    setNotificationMessage("Item removed from basket");
-    setShowNotification(true);
-    setTimeout(() => setShowNotification(false), 2000); // Hide notification after 2 seconds
-  };
-
-  const handleButtonClick = () => {
-    if (isInCart) {
-      handleRemoveFromCart();
-    } else {
-      handleAddToCart();
-    }
-  };
+  // const handleRemoveFromCart = () => {
+  //   dispatch(
+  //     removeItemFromCart({
+  //       ...product,
+  //       size: selectedSize || product.sizes[0], // Ensure default if removed
+  //       color: selectedColor || product.availableColors[0], // Ensure default if removed
+  //     })
+  //   );
+  //   setNotificationMessage("Item removed from basket");
+  //   setShowNotification(true);
+  //   setTimeout(() => setShowNotification(false), 2000); // Hide notification after 2 seconds
+  // };
 
   return (
     <div>
@@ -141,11 +136,11 @@ const ProductDetails = () => {
       <div style={{ display: "flex", gap: "40px", padding: "20px" }}>
         {/* Left Section with small additional Images */}
         <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
-          {imageCollection.map((img) => (
+          {product.imageCollection.map((img) => (
             <img
               key={img.id}
               src={img.url}
-              alt={`${name} additional`}
+              alt={`${product.name} additional`}
               style={{
                 width: "100%",
                 borderRadius: "8px",
@@ -163,7 +158,7 @@ const ProductDetails = () => {
           <div style={{ flex: "1" }}>
             <img
               src={mainImage || product.image} // Fallback to product.image if mainImage is null
-              alt={name}
+              alt={product.name}
               style={{
                 width: "100%",
                 borderRadius: "8px",
@@ -174,12 +169,12 @@ const ProductDetails = () => {
 
           {/* Product Info Section */}
           <div style={{ flex: "1" }}>
-            <p style={{ fontSize: "12px", color: "#555" }}>{brand}</p>
-            <h2 style={{ fontSize: "32px", margin: "10px 0" }}>{name}</h2>
+            <p style={{ fontSize: "12px", color: "#555" }}>{product.brand}</p>
+            <h2 style={{ fontSize: "32px", margin: "10px 0" }}>{product.name}</h2>
             <p
               style={{ fontSize: "14px", color: "#777", marginBottom: "20px" }}
             >
-              {description}
+              {product.description}
             </p>
 
             <p style={{ margin: "20px 0", fontWeight: "bold" }}>
@@ -190,7 +185,7 @@ const ProductDetails = () => {
               onChange={(e) => setSelectedSize(e.target.value)}
               style={{ padding: "10px", width: "100%", marginBottom: "20px" }}
             >
-              {sizes.map((size) => (
+              {product.sizes.map((size) => (
                 <option key={size} value={size}>
                   {size} mm
                 </option>
@@ -199,7 +194,7 @@ const ProductDetails = () => {
 
             <p style={{ margin: "20px 0", fontWeight: "bold" }}>Choose Color</p>
             <div style={{ display: "flex", gap: "10px" }}>
-              {availableColors.map((color, index) => (
+              {product.availableColors.map((color, index) => (
                 <div
                   key={index}
                   style={{
@@ -221,7 +216,7 @@ const ProductDetails = () => {
             <p
               style={{ margin: "30px 0", fontSize: "24px", fontWeight: "bold" }}
             >
-              ${price.toFixed(2)}
+              ${product.price.toFixed(2)}
             </p>
 
             <button
@@ -251,16 +246,6 @@ const ProductDetails = () => {
         </div>
         <RecommendedProducts></RecommendedProducts>
       </div>
-
-      {showNotification && (
-        <Alert
-          className="alert"
-          icon={<CheckIcon fontSize="inherit" />}
-          severity={isInCart ? "success" : "warning"}
-        >
-          {notificationMessage}
-        </Alert>
-      )}
     </div>
   );
 };
