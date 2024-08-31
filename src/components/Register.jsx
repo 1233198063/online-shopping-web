@@ -46,8 +46,8 @@ export default function Register() {
             })
             console.log("Document written with ID: ", docRef.id);
 
-            // Navigation to login
-            navigate('/login'); // Navigate to login after successful registration
+            // Navigation to login after successful registration
+            navigate('/login');
 
         } catch (error) {
             const errorCode = error.code;

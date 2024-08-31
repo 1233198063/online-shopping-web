@@ -5,6 +5,7 @@ import {
   hideNotification,
   selectNotification,
 } from "../store/cart";
+import { selectCurrentUser, logout } from "../store/auth";
 import { NavLink, useRoutes, useNavigate } from "react-router-dom";
 import routes from "../route";
 
@@ -26,11 +27,14 @@ export default function Layout() {
 
   const notification = useSelector(selectNotification);
   const totalQuantity = useSelector(selectTotalQuantity);
+  const currentUser = useSelector(selectCurrentUser);
 
   const [cartItems, setCartItems] = useState([]);
   const [isCartOpen, setIsCartOpen] = useState(false); // State to manage cart visibility
   const [currentPage, setCurrentPage] = useState("");
   // Track current page ('' for general, 'register' for RegisterPage, 'login' for LoginPage)
+
+  const [dropdownOpen, setDropdownOpen] = useState(false);
 
   // busket and cart
   const handleOpenCart = () => {
@@ -75,6 +79,21 @@ export default function Layout() {
     navigate("/login"); // Navigate to login page
   };
 
+  // already signed in: avatar
+  const handleAvatarClick = () => {
+    setDropdownOpen((prev) => !prev);
+  };
+
+  const handleSignOut = () => {
+    dispatch(logout());
+    setDropdownOpen(false);
+  };
+
+  const handleViewAccount = () => {
+    navigate("/account");
+    setDropdownOpen(false);
+  };
+
   return (
     <div className="layout-div">
       <nav className="nav-bar">
@@ -115,7 +134,7 @@ export default function Layout() {
           </IconButton>
         </div>
 
-        <div className="action-buttons">
+        {/* <div className="action-buttons">
           {currentPage !== "register" && (
             <button className="button button-small" onClick={handleSignUpClick}>
               Sign Up
@@ -128,6 +147,34 @@ export default function Layout() {
             >
               Sign In
             </button>
+          )}
+        </div> */}
+
+        <div className="action-buttons">
+          {currentUser ? (
+            <div className="user-avatar">
+              <img
+                src="/path/to/default-avatar.png"
+                alt="User Avatar"
+                onClick={handleAvatarClick}
+                style={{ cursor: "pointer" }}
+              />
+              {dropdownOpen && (
+                <div className="dropdown-menu">
+                  <button onClick={handleViewAccount}>View account</button>
+                  <button onClick={handleSignOut}>Sign Out</button>
+                </div>
+              )}
+            </div>
+          ) : (
+            <>
+              <button className="button" onClick={() => navigate("/login")}>
+                Sign In
+              </button>
+              <button className="button" onClick={() => navigate("/register")}>
+                Sign Up
+              </button>
+            </>
           )}
         </div>
       </nav>

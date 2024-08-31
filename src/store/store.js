@@ -1,14 +1,16 @@
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
 
-import counterReducer from "./counter";
+// import counterReducer from "./counter";
 import cartReducer from "./cart";
+import authReducer from './auth';
 import { persistReducer, persistStore } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 
 // Combine multiple reducers
 const reducers = combineReducers({
-    counter: counterReducer,
+    // counter: counterReducer,
     cart: cartReducer, 
+    auth: authReducer
 })
 
 // persistent configuration

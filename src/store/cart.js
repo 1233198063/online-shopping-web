@@ -4,8 +4,8 @@ const initialState = {
   items: [],
   notification: {
     show: false,
-    message: '',
-    severity: 'success',
+    message: "",
+    severity: "success",
   },
 };
 
@@ -28,8 +28,8 @@ const cartSlice = createSlice({
 
       state.notification = {
         show: true,
-        message: 'Item added to basket',
-        severity: 'success',
+        message: "Item added to basket",
+        severity: "success",
       };
     },
     removeItemFromCart: (state, action) => {
@@ -42,9 +42,33 @@ const cartSlice = createSlice({
 
       state.notification = {
         show: true,
-        message: 'Item removed from basket',
-        severity: 'warning',
+        message: "Item removed from basket",
+        severity: "warning",
       };
+    },
+    increaseItemQuantity: (state, action) => {
+      const item = action.payload;
+      const existingItem = state.items.find(
+        (cartItem) =>
+          cartItem.id === item.id &&
+          cartItem.size === item.size &&
+          cartItem.color === item.color
+      );
+      if (existingItem) {
+        existingItem.quantity += 1;
+      }
+    },
+    decreaseItemQuantity: (state, action) => {
+      const item = action.payload;
+      const existingItem = state.items.find(
+        (cartItem) =>
+          cartItem.id === item.id &&
+          cartItem.size === item.size &&
+          cartItem.color === item.color
+      );
+      if (existingItem && existingItem.quantity > 1) {
+        existingItem.quantity -= 1;
+      }
     },
     hideNotification: (state) => {
       state.notification.show = false;
@@ -55,8 +79,14 @@ const cartSlice = createSlice({
   },
 });
 
-export const { addItemToCart, removeItemFromCart, clearCart, hideNotification } =
-  cartSlice.actions;
+export const {
+  addItemToCart,
+  removeItemFromCart,
+  increaseItemQuantity,
+  decreaseItemQuantity,
+  clearCart,
+  hideNotification,
+} = cartSlice.actions;
 
 export const selectCartItems = (state) => state.cart.items;
 export const isItemInCart = (state, itemId) =>
