@@ -6,7 +6,7 @@ import {
   selectNotification,
 } from "../store/cart";
 import { selectCurrentUser, logout } from "../store/auth";
-import { NavLink, useRoutes, useNavigate } from "react-router-dom";
+import { NavLink, useRoutes, useNavigate, useLocation } from "react-router-dom";
 import routes from "../route";
 
 import Cart from "../components/cart/Cart";
@@ -22,6 +22,7 @@ import "../styles/layout.css";
 export default function Layout() {
   const element = useRoutes(routes);
   const navigate = useNavigate();
+  const location = useLocation();
 
   const dispatch = useDispatch();
 
@@ -150,15 +151,20 @@ export default function Layout() {
           )}
         </div> */}
 
+        {/* Right-top corner: sign up and sign in buttons / user avatar*/}
         <div className="action-buttons">
           {currentUser ? (
             <div className="user-avatar">
-              <img
-                src="/path/to/default-avatar.png"
-                alt="User Avatar"
-                onClick={handleAvatarClick}
-                style={{ cursor: "pointer" }}
-              />
+              <p>user name</p>
+              <div className="user-avatar-picture">
+                <img
+                  src="/images/banner-girl1.png"
+                  alt="User Avatar"
+                  onClick={handleAvatarClick}
+                  style={{ cursor: "pointer" }}
+                />
+              </div>
+              <span class="material-symbols-outlined">keyboard_arrow_down</span>
               {dropdownOpen && (
                 <div className="dropdown-menu">
                   <button onClick={handleViewAccount}>View account</button>
@@ -168,12 +174,23 @@ export default function Layout() {
             </div>
           ) : (
             <>
-              <button className="button" onClick={() => navigate("/login")}>
-                Sign In
-              </button>
-              <button className="button" onClick={() => navigate("/register")}>
-                Sign Up
-              </button>
+              {/* Conditionally render buttons based on the current pathname */}
+              {location.pathname !== "/register" && (
+                <button
+                  className="button"
+                  onClick={() => navigate("/register")}
+                >
+                  Sign Up
+                </button>
+              )}
+              {location.pathname !== "/login" && (
+                <button
+                  className="button button-white"
+                  onClick={() => navigate("/login")}
+                >
+                  Sign In
+                </button>
+              )}
             </>
           )}
         </div>

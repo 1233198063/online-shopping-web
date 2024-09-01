@@ -1,7 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
+import { auth } from '../service/config';
 
-const auth = getAuth();
+// const auth = getAuth();
 
 const authSlice = createSlice({
   name: 'auth',

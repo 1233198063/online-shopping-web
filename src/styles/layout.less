@@ -99,6 +99,37 @@
 
       margin-left: @padding-small;
     }
+
+    .user-avatar{
+      display: flex;
+      align-items: center;
+
+      position: relative;
+      
+      .user-avatar-picture {
+        border: @border-width black solid;
+        border-radius: 50%;
+        width: (800px / @vw);
+        height: (800px / @vw);
+  
+        overflow: hidden;
+
+        margin-left: @padding-small;
+
+        img {
+          height: 100%;
+        }
+      }
+
+      .dropdown-menu{
+        display: flex;
+        flex-direction: column;
+
+        position: absolute;
+        top: (1500px / @vw);
+        right: (1500px / @vw);
+      }
+    }
   }
 }
 
