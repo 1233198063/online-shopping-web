@@ -26,7 +26,11 @@ export const selectCurrentUser = (state) => state.auth.currentUser;
 export const startAuthListener = () => (dispatch) => {
   onAuthStateChanged(auth, (user) => {
     if (user) {
-      dispatch(setUser(user));
+      dispatch(setUser({
+        uid: user.uid,
+        email: user.email,
+        displayName: user.displayName,
+      }));
     } else {
       dispatch(clearUser());
     }

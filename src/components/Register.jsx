@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react'
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { collection, addDoc } from "firebase/firestore";
 import { getFirestore } from "firebase/firestore";
 import { app } from '../service/config';
@@ -36,12 +36,17 @@ export default function Register() {
 
         try {
             // Signed up 
-            const user = await createUserWithEmailAndPassword(auth, email, password)
+            const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+            const user = userCredential.user;
+
+            // Update the user's profile with the username
+            await updateProfile(user, { displayName: uname });
+
             // Maintain in Firebase
             const docRef = await addDoc(collection(db, 'users1'), {
                 name: uname,
                 email,
-                id: user.user.uid,
+                id: user.uid,
                 basket: []
             })
             console.log("Document written with ID: ", docRef.id);
@@ -60,9 +65,9 @@ export default function Register() {
         <div>
             <h1>Register</h1>
             <form action="#" onSubmit={handleClick}>
-                username: <input type='text' onBlur={getUname} ref={unameRef} /><br />
-                email: <input type='email' onBlur={getEmail} ref={emailRef} /><br />
-                password: <input type='passsword' onBlur={getPassword} ref={passwordRef} /><br />
+                Username: <input type='text' onBlur={getUname} ref={unameRef} /><br />
+                Email: <input type='email' onBlur={getEmail} ref={emailRef} /><br />
+                Password: <input type='passsword' onBlur={getPassword} ref={passwordRef} /><br />
                 <input type="submit" value="Register" />
             </form>
         </div>

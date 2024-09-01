@@ -13,6 +13,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 }
 a {
   text-decoration: none;
@@ -72,4 +73,11 @@ h2 {
   font-size: 15.625px;
   font-weight: 600;
   text-decoration: underline;
+}
+.button-white {
+  background-color: #f2f2f2;
+  color: #7d7d7d;
+  border: 1px solid #e1e1e1;
+  margin-left: 10.41666667px;
+  cursor: pointer;
 }

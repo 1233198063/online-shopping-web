@@ -70,15 +70,15 @@ export default function Layout() {
   }, [notification, dispatch]);
 
   // sign up and sign in
-  const handleSignUpClick = () => {
-    setCurrentPage("register");
-    navigate("/register"); // Navigate to register page
-  };
+  // const handleSignUpClick = () => {
+  //   setCurrentPage("register");
+  //   navigate("/register"); // Navigate to register page
+  // };
 
-  const handleSignInClick = () => {
-    setCurrentPage("login");
-    navigate("/login"); // Navigate to login page
-  };
+  // const handleSignInClick = () => {
+  //   setCurrentPage("login");
+  //   navigate("/login"); // Navigate to login page
+  // };
 
   // already signed in: avatar
   const handleAvatarClick = () => {
@@ -155,7 +155,7 @@ export default function Layout() {
         <div className="action-buttons">
           {currentUser ? (
             <div className="user-avatar">
-              <p>user name</p>
+              <p>{currentUser.displayName}</p>
               <div className="user-avatar-picture">
                 <img
                   src="/images/banner-girl1.png"
@@ -167,8 +167,14 @@ export default function Layout() {
               <span class="material-symbols-outlined">keyboard_arrow_down</span>
               {dropdownOpen && (
                 <div className="dropdown-menu">
-                  <button onClick={handleViewAccount}>View account</button>
-                  <button onClick={handleSignOut}>Sign Out</button>
+                  <button onClick={handleViewAccount}>
+                    View account
+                    <span class="material-symbols-outlined">person</span>
+                  </button>
+                  <button onClick={handleSignOut}>
+                    Sign Out
+                    <span class="material-symbols-outlined">logout</span>
+                  </button>
                 </div>
               )}
             </div>

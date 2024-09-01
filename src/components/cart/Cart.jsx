@@ -1,4 +1,4 @@
-import React, { useState }  from "react";
+import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
   removeItemFromCart,
@@ -50,7 +50,7 @@ const Cart = ({ onClose, isAuthenticated }) => {
   const handleSignInToCheckOut = () => {
     navigate("/login");
     handleCloseModal();
-    onClose(); 
+    onClose();
   };
 
   const handleContinueShopping = () => {
@@ -64,45 +64,63 @@ const Cart = ({ onClose, isAuthenticated }) => {
         <h2>
           My Basket ({cartItems.length} item{cartItems.length > 1 ? "s" : ""})
         </h2>
-        <button onClick={onClose}>Close</button>
-        <button onClick={handleClearCart}>Clear Basket</button>
+        <div className="buttons">
+          <button className="button button-white" onClick={onClose}>
+            Close
+          </button>
+          <button className="button button-white" onClick={handleClearCart}>
+            Clear Basket
+          </button>
+        </div>
       </div>
       <div className="cart-content">
         {cartItems.map((item, index) => (
           <div key={index} className="cart-item">
             <div className="buttons">
               <button
-                className="add"
+                className="add button button-white"
                 onClick={() => handleIncreaseQuantity(item)}
               >
                 +
               </button>
               <button
-                className="subtract"
+                className="subtract button button-white"
                 onClick={() => handleDecreaseQuantity(item)}
                 disabled={item.quantity === 1}
               >
                 -
               </button>
             </div>
-            <img src={item.image} alt={item.name} />
+            <div className="item-img">
+              <img src={item.image} alt={item.name} />
+            </div>
             <div className="cart-item-info">
               <h3>{item.name}</h3>
-              <p>Quantity: {item.quantity}</p>
-              <p>Size: {item.size} mm</p>
-              <p>
-                Color:{" "}
-                <span
-                  style={{ backgroundColor: item.color }}
-                  className="color-box"
-                ></span>
-              </p>
+              <div className="item-details">
+                <div className="quantity">
+                  <p>Quantity</p>
+                  <div> {item.quantity}</div>
+                </div>
+                <div className="size">
+                  <p>Size</p>
+                  <div> {item.size} mm</div>
+                </div>
+                <div className="color">
+                  <p>
+                    Color{" "}
+                  </p>
+                  <span
+                      style={{ backgroundColor: item.color }}
+                      className="color-box"
+                    ></span>
+                </div>
+              </div>
             </div>
             <div className="cart-item-price">
               ${(item.price * item.quantity).toFixed(2)}
             </div>
             <button
-              className="remove-button"
+              className="remove-button button-white button"
               onClick={() => dispatch(removeItemFromCart(item))}
             >
               X
