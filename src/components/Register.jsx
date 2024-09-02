@@ -71,15 +71,6 @@ export default function Register() {
   };
 
   return (
-    // <div>
-    //     <h1>Register</h1>
-    //     <form action="#" onSubmit={handleClick}>
-    //         Username: <input type='text' onBlur={getUname} ref={unameRef} /><br />
-    //         Email: <input type='email' onBlur={getEmail} ref={emailRef} /><br />
-    //         Password: <input type='passsword' onBlur={getPassword} ref={passwordRef} /><br />
-    //         <input type="submit" value="Register" />
-    //     </form>
-    // </div>
     <div className="main-content auth">
       <div className="auth-container">
         <h2>Sign up to Salinaka</h2>
@@ -89,21 +80,21 @@ export default function Register() {
             <input
               type="text"
               className="auth-input"
-              onBlur={() => setUname(unameRef.current.value)}
+              onBlur={getUname}
               ref={unameRef}
             />
             <label className="auth-input-label">Email</label>
             <input
               type="email"
               className="auth-input"
-              onBlur={() => setEmail(emailRef.current.value)}
+              onBlur={getEmail}
               ref={emailRef}
             />
             <label className="auth-input-label">Password</label>
             <input
               type="password"
               className="auth-input"
-              onBlur={() => setPassword(passwordRef.current.value)}
+              onBlur={getPassword}
               ref={passwordRef}
             />
             <button type="submit" value="Register" className="button">
@@ -113,7 +104,8 @@ export default function Register() {
           </form>
 
           <div className="divider">
-            <div className="line"></div>OR
+            <div className="line"></div>
+            OR
             <div className="line"></div>
           </div>
 
@@ -126,7 +118,7 @@ export default function Register() {
 
         <div className="auth-footer">
           <p>Already have an account? </p>
-          <a className="button button-white" href="/login">
+          <a className="button button-white" onClick={() => navigate("/login")}>
             Sign In
           </a>
         </div>

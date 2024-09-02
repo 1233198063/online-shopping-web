@@ -16,13 +16,13 @@ export default function Login() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  // const getEmail = () => {
-  //   setEmail(emailRef.current.value);
-  // };
+  const getEmail = () => {
+    setEmail(emailRef.current.value);
+  };
 
-  // const getPassword = () => {
-  //   setPassword(passwordRef.current.value);
-  // };
+  const getPassword = () => {
+    setPassword(passwordRef.current.value);
+  };
 
   const auth = getAuth();
 
@@ -38,71 +38,53 @@ export default function Login() {
     }
   };
 
-  // const logOut = async () => {
-  //   const auth = getAuth();
-  //   signOut(auth)
-  //     .then(() => {
-  //       // Sign-out successful.
-  //       // Replace the user avatar with a registration button
-  //     })
-  //     .catch((error) => {
-  //       // An error happened.
-  //       console.error(error.message);
-  //     });
-  // };
-
   return (
-    //  <div>
-    //   <h1>Login</h1>
-    //   <form action="#" onSubmit={handleClick}>
-    //     email: <input type='email' onBlur={() => setEmail(emailRef.current.value)} ref={emailRef} /><br />
-    //     password: <input type='password' onBlur={() => setPassword(passwordRef.current.value)} ref={passwordRef} /><br />
-    //     <input type="submit" value="Login" />
-    //   </form>
-    // </div>
     <div className="main-content auth">
       <div className="auth-container">
-        <div className="auth-header">
-          <h2>Sign in to Salinaka</h2>
-        </div>
-        <form className="auth-form" onSubmit={handleClick}>
-          <label className="auth-input-label">Email</label>
-          <input
-            type="email"
-            className="auth-input"
-            onBlur={() => setEmail(emailRef.current.value)}
-            ref={emailRef}
-          />
-          <label className="auth-input-label">Password</label>
-          <input
-            type="password"
-            className="auth-input"
-            onBlur={() => setPassword(passwordRef.current.value)}
-            ref={passwordRef}
-          />
-          <a href="#" className="auth-footer">
-            Forgot password?
-          </a>
-          <button type="submit" className="button">
-            Sign In
-          </button>
-        </form>
+        <h2>Sign in to Salinaka</h2>
+        <div className="auth-top">
+          <form className="auth-form" onSubmit={handleClick}>
+            <label className="auth-input-label">Email</label>
+            <input
+              type="email"
+              className="auth-input"
+              onBlur={getEmail}
+              ref={emailRef}
+            />
+            <label className="auth-input-label">Password</label>
+            <input
+              type="password"
+              className="auth-input"
+              onBlur={getPassword}
+              ref={passwordRef}
+            />
+            <a href="#" className="auth-forgot">
+              Forgot password?
+            </a>
+            <button type="submit" className="button">
+              Sign In
+              <span class="material-symbols-outlined">arrow_forward</span>
+            </button>
+          </form>
 
-        <div className="divider">OR</div>
+          <div className="divider">
+            <div className="line"></div>
+            OR
+            <div className="line"></div>
+          </div>
 
-        <div className="social-buttons">
-          <button className="social-button social-button-google">
-            Continue with Google
-          </button>
+          <div className="social-buttons">
+            <button className="social-button button-white">
+              Continue with Google
+            </button>
+          </div>
         </div>
 
         <div className="auth-footer">
-          <p>
-            Don't have an account?{" "}
-            <a className="button button-white" href="/register">
-              Sign Up
-            </a>
-          </p>
+          <p>Don't have an account? </p>
+          <a className="button button-white" onClick={() => navigate("/register")}>
+            Sign Up
+          </a>
         </div>
       </div>
     </div>

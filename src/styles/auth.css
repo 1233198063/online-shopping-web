@@ -36,6 +36,10 @@
   font-size: 15.625px;
   font-weight: bold;
 }
+.main-content.auth .auth-container .auth-top .auth-form .auth-forgot {
+  color: #000;
+  text-decoration: underline;
+}
 .main-content.auth .auth-container .auth-top .auth-form .button:hover {
   background-color: #333;
 }
