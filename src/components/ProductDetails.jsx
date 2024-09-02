@@ -88,7 +88,7 @@ const ProductDetails = () => {
 
       <div className="product-details-container">
         {/* Left Section with small additional Images */}
-        <div className="product-details-left-section">
+        <div className="left-section">
           {product.imageCollection.map((img) => (
             <img
               key={img.id}
@@ -100,9 +100,9 @@ const ProductDetails = () => {
         </div>
 
         {/* Main Product Details Section */}
-        <div className="product-details-main-section">
+        <div className="main-section">
           {/* Main Product Image */}
-          <div className="product-details-main-image">
+          <div className="main-image">
             <img
               src={mainImage || product.image} // Fallback to product.image if mainImage is null
               alt={product.name}
@@ -115,7 +115,7 @@ const ProductDetails = () => {
             <h2 className="product-info-name">{product.name}</h2>
             <p className="product-info-description">{product.description}</p>
 
-            <p style={{ margin: "20px 0", fontWeight: "bold" }}>Lens Width and Frame Size</p>
+            <p className="product-info-subtitle">Lens Width and Frame Size</p>
             <select
               value={selectedSize}
               onChange={(e) => setSelectedSize(e.target.value)}
@@ -128,7 +128,7 @@ const ProductDetails = () => {
               ))}
             </select>
 
-            <p style={{ margin: "20px 0", fontWeight: "bold" }}>Choose Color</p>
+            <p className="product-info-subtitle">Choose Color</p>
             <div className="product-info-color-selection">
               {product.availableColors.map((color, index) => (
                 <div
@@ -145,11 +145,11 @@ const ProductDetails = () => {
               ))}
             </div>
 
-            <p className="product-info-price">${product.price.toFixed(2)}</p>
+            <h2 className="product-info-price">${product.price.toFixed(2)}</h2>
 
             <button
               onClick={handleButtonClick}
-              className="product-info-button"
+              className="button"
             >
               {isInCart ? "Remove From Basket" : "Add To Basket"}
             </button>
@@ -165,136 +165,6 @@ const ProductDetails = () => {
         <RecommendedProducts></RecommendedProducts>
       </div>
     </div>
-    // <div>
-    //   <div style={{ width: "20%", textAlign: "center" }}>
-    //     <Link
-    //       to="/shop"
-    //       style={{
-    //         textDecoration: "none",
-    //         color: "#000",
-    //         display: "block",
-    //         marginBottom: "20px",
-    //       }}
-    //     >
-    //       <span className="material-symbols-outlined">arrow_back</span> Back to
-    //       Shop
-    //     </Link>
-    //   </div>
-
-    //   <div style={{ display: "flex", gap: "40px", padding: "20px" }}>
-    //     {/* Left Section with small additional Images */}
-    //     <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
-    //       {product.imageCollection.map((img) => (
-    //         <img
-    //           key={img.id}
-    //           src={img.url}
-    //           alt={`${product.name} additional`}
-    //           style={{
-    //             width: "100%",
-    //             borderRadius: "8px",
-    //             cursor: "pointer",
-    //             border: "1px solid #ccc",
-    //           }}
-    //           onClick={() => setMainImage(img.url)} // Update main image on click
-    //         />
-    //       ))}
-    //     </div>
-
-    //     {/* Main Product Details Section */}
-    //     <div style={{ width: "75%", display: "flex", gap: "40px" }}>
-    //       {/* Main Product Image */}
-    //       <div style={{ flex: "1" }}>
-    //         <img
-    //           src={mainImage || product.image} // Fallback to product.image if mainImage is null
-    //           alt={product.name}
-    //           style={{
-    //             width: "100%",
-    //             borderRadius: "8px",
-    //             border: "1px solid #ccc",
-    //           }}
-    //         />
-    //       </div>
-
-    //       {/* Product Info Section */}
-    //       <div style={{ flex: "1" }}>
-    //         <p style={{ fontSize: "12px", color: "#555" }}>{product.brand}</p>
-    //         <h2 style={{ fontSize: "32px", margin: "10px 0" }}>{product.name}</h2>
-    //         <p
-    //           style={{ fontSize: "14px", color: "#777", marginBottom: "20px" }}
-    //         >
-    //           {product.description}
-    //         </p>
-
-    //         <p style={{ margin: "20px 0", fontWeight: "bold" }}>
-    //           Lens Width and Frame Size
-    //         </p>
-    //         <select
-    //           value={selectedSize}
-    //           onChange={(e) => setSelectedSize(e.target.value)}
-    //           style={{ padding: "10px", width: "100%", marginBottom: "20px" }}
-    //         >
-    //           {product.sizes.map((size) => (
-    //             <option key={size} value={size}>
-    //               {size} mm
-    //             </option>
-    //           ))}
-    //         </select>
-
-    //         <p style={{ margin: "20px 0", fontWeight: "bold" }}>Choose Color</p>
-    //         <div style={{ display: "flex", gap: "10px" }}>
-    //           {product.availableColors.map((color, index) => (
-    //             <div
-    //               key={index}
-    //               style={{
-    //                 backgroundColor: color,
-    //                 width: "40px",
-    //                 height: "40px",
-    //                 borderRadius: "50%",
-    //                 border:
-    //                   selectedColor === color
-    //                     ? "2px solid #000"
-    //                     : "2px solid #ccc",
-    //                 cursor: "pointer",
-    //               }}
-    //               onClick={() => setSelectedColor(color)}
-    //             />
-    //           ))}
-    //         </div>
-
-    //         <p
-    //           style={{ margin: "30px 0", fontSize: "24px", fontWeight: "bold" }}
-    //         >
-    //           ${product.price.toFixed(2)}
-    //         </p>
-
-    //         <button
-    //           onClick={handleButtonClick}
-    //           style={{
-    //             backgroundColor: "#000",
-    //             color: "#fff",
-    //             padding: "15px 20px",
-    //             border: "none",
-    //             cursor: "pointer",
-    //             borderRadius: "8px",
-    //             fontSize: "16px",
-    //             width: "100%",
-    //           }}
-    //         >
-    //           {isInCart ? "Remove From Basket" : "Add To Basket"}
-    //         </button>
-
-    //       </div>
-    //     </div>
-    //   </div>
-
-    //   <div className="display">
-    //     <div className="display-header">
-    //       <h2>Recommended Products</h2>
-    //       <NavLink to={"/recommended"}>See All</NavLink>
-    //     </div>
-    //     <RecommendedProducts></RecommendedProducts>
-    //   </div>
-    // </div>
   );
 };
 
