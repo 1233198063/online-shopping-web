@@ -116,6 +116,7 @@ const ProductDetails = () => {
             <p className="product-info-description">{product.description}</p>
 
             <p className="product-info-subtitle">Lens Width and Frame Size</p>
+             
             <select
               value={selectedSize}
               onChange={(e) => setSelectedSize(e.target.value)}
