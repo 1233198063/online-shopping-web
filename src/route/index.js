@@ -2,7 +2,6 @@ import Featured from "../pages/Featured"
 import Home from "../pages/Home"
 import Recommended from "../pages/Recommended"
 import Shop from "../pages/Shop"
-import Detail from "../pages/Detail"
 import ProductDetails from "../components/ProductDetails"
 import Register from "../components/Register"
 import Login from "../components/Login"
@@ -18,13 +17,7 @@ const routes = [
     },
     {
         path:'/shop',
-        element:<Shop></Shop>,
-        children:[
-            {
-                path:'detail/:id/:detail',
-                element:<Detail></Detail>
-            }
-        ]
+        element:<Shop></Shop>
     },
     {
         path:'/featured',

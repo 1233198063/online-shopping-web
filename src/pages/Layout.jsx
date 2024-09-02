@@ -32,8 +32,6 @@ export default function Layout() {
 
   const [cartItems, setCartItems] = useState([]);
   const [isCartOpen, setIsCartOpen] = useState(false); // State to manage cart visibility
-  const [currentPage, setCurrentPage] = useState("");
-  // Track current page ('' for general, 'register' for RegisterPage, 'login' for LoginPage)
 
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
@@ -68,17 +66,6 @@ export default function Layout() {
       return () => clearTimeout(timer);
     }
   }, [notification, dispatch]);
-
-  // sign up and sign in
-  // const handleSignUpClick = () => {
-  //   setCurrentPage("register");
-  //   navigate("/register"); // Navigate to register page
-  // };
-
-  // const handleSignInClick = () => {
-  //   setCurrentPage("login");
-  //   navigate("/login"); // Navigate to login page
-  // };
 
   // already signed in: avatar
   const handleAvatarClick = () => {
@@ -134,22 +121,6 @@ export default function Layout() {
             </Badge>
           </IconButton>
         </div>
-
-        {/* <div className="action-buttons">
-          {currentPage !== "register" && (
-            <button className="button button-small" onClick={handleSignUpClick}>
-              Sign Up
-            </button>
-          )}
-          {currentPage !== "login" && (
-            <button
-              className="button button-small button-white"
-              onClick={handleSignInClick}
-            >
-              Sign In
-            </button>
-          )}
-        </div> */}
 
         {/* Right-top corner: sign up and sign in buttons / user avatar*/}
         <div className="action-buttons">

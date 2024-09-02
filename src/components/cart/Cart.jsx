@@ -136,7 +136,7 @@ const Cart = ({ onClose, isAuthenticated }) => {
             .reduce((total, item) => total + item.price * item.quantity, 0)
             .toFixed(2)}
         </h3>
-        <button className="checkout-button" onClick={handleCheckOut}>
+        <button className="checkout-button button" onClick={handleCheckOut}>
           CHECK OUT
         </button>
       </div>
