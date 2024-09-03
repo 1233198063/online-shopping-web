@@ -1,0 +1,131 @@
+@vw: 19.2vw;
+
+@border-width: (20px / @vw);
+@border-width-big: (25px / @vw);
+
+@padding-large: (500px / @vw);
+@padding-big: (300px / @vw);
+@padding-small: (200px / @vw);
+@padding-mini: (100px / @vw);
+
+@margin-mini: (1000px / @vw);
+@margin-small: (1500px / @vw);
+@margin-big: (3000px / @vw);
+
+.product-details-back-link {
+  width: 20%;
+  display: block;
+  margin-bottom: @margin-mini;
+  margin-left: @margin-big;
+  margin-top: @margin-small;
+
+  a {
+    display: flex;
+    align-items: center;
+
+    font-size: (400px / @vw);
+    text-decoration: none;
+    color: #000;
+  }
+}
+
+.product-details-container {
+  display: flex;
+  gap: @padding-small;
+  border: #ccc solid @border-width;
+  background-color: #fff;
+  margin: 0px @margin-big;
+
+  max-width: (26000px / @vw);
+
+  .left-section {
+    display: flex;
+    flex-direction: column;
+    gap: @padding-mini;
+
+    width: (3500px / @vw);
+
+    padding: @padding-small;
+
+    border-right: @border-width solid #ccc;
+
+    img {
+      width: 100%;
+      cursor: pointer;
+      border: 1px solid #ccc;
+    }
+  }
+
+  .main-section {
+    width: 75%;
+    display: flex;
+    gap: 2 * @padding-small;
+
+    .main-image {
+      flex: 1;
+      width: 100%;
+      border-left: @border-width solid #ccc;
+      background-color: #f9f9f9;
+    }
+
+    .product-info-section {
+      flex: 1;
+      margin: @padding-big @padding-small;
+    }
+
+    .product-info-brand {
+      font-size: @padding-big;
+      color: #555;
+    }
+
+    .product-info-name {
+      margin: @padding-mini 0;
+    }
+
+    .product-info-description {
+      font-size: (250px / @vw);
+      color: #777;
+      padding-bottom: @padding-big;
+
+      border-bottom: @border-width #e6e6e6 solid;
+    }
+
+    .product-info-subtitle {
+      margin: @padding-big 0;
+      font-weight: bold;
+      color: #818181;
+    }
+
+    .product-info-select {
+      padding: @padding-small;
+      width: 100%;
+      margin-bottom: @padding-small;
+
+      border: #777 solid @border-width;
+      border-radius: @padding-mini;
+    }
+
+    .product-info-color-selection {
+      display: flex;
+      gap: @padding-mini;
+
+      div {
+        width: @padding-large;
+        height: @padding-large;
+        border-radius: 50%;
+        cursor: pointer;
+      }
+    }
+
+    .product-info-price {
+      margin: @padding-large 0;
+      font-size: @padding-large;
+      font-weight: bold;
+    }
+
+    .product-info-button:disabled {
+      background-color: #777;
+      cursor: not-allowed;
+    }
+  }
+}

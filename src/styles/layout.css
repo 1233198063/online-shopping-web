@@ -1,0 +1,170 @@
+.layout-div {
+  position: relative;
+}
+.nav-bar {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  max-height: 78.125px;
+  padding: 26.04166667px 10.41666667px 5.20833333px;
+}
+.nav-bar .web-icon {
+  display: block;
+  min-width: 156.25px;
+  height: 52.08333333px;
+}
+.nav-bar .web-icon .icon-img {
+  width: 100%;
+  height: 100%;
+  background-image: url(../../public/images/eyewear-logo.png);
+  background-size: cover;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+}
+.nav-bar .nav-links {
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  column-gap: 15.625px;
+  margin-right: 78.125px;
+}
+.nav-bar .nav-links a {
+  padding: 10.41666667px;
+  color: #101010;
+}
+.nav-bar .nav-links a:hover {
+  background-color: #f2f2f2;
+}
+.nav-bar .nav-links a.active {
+  color: black;
+}
+.nav-bar .searchbar {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.nav-bar .searchbar .search-icon {
+  position: absolute;
+  left: 5.20833333px;
+}
+.nav-bar .searchbar .search-input {
+  border-width: 0px;
+  border: 1.30208333px solid #e1e1e1;
+  padding: 10.41666667px 10.41666667px 10.41666667px 52.08333333px;
+  width: 260.41666667px;
+}
+.nav-bar .shopping-bag {
+  cursor: pointer;
+  padding: 10.41666667px;
+}
+.nav-bar .action-buttons {
+  display: flex;
+  justify-content: flex-end;
+  margin-left: 78.125px;
+}
+.nav-bar .action-buttons .user-avatar {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.nav-bar .action-buttons .user-avatar .user-avatar-picture {
+  border: 1.04166667px black solid;
+  border-radius: 50%;
+  width: 41.66666667px;
+  height: 41.66666667px;
+  overflow: hidden;
+  margin-left: 10.41666667px;
+}
+.nav-bar .action-buttons .user-avatar .user-avatar-picture img {
+  height: 100%;
+}
+.nav-bar .action-buttons .user-avatar .dropdown-menu {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 52.08333333px;
+  right: 0px;
+  box-shadow: 0 5px 12px #0000001a;
+}
+.nav-bar .action-buttons .user-avatar .dropdown-menu button {
+  padding: 10.41666667px 10.41666667px;
+  border: none;
+  cursor: pointer;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.nav-bar .action-buttons .user-avatar .dropdown-menu button:hover {
+  background-color: #e1e1e1;
+}
+.cart-badge {
+  position: absolute;
+  top: - 5.20833333px;
+  right: - 5.20833333px;
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  width: 10.41666667px;
+  height: 10.41666667px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10.41666667px;
+}
+/* alert Notification */
+.alert {
+  position: fixed;
+  top: 93.75px;
+  right: 130.20833333px;
+  z-index: 10;
+}
+.footer {
+  background-color: #f0f0f0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 52.08333333px 0px;
+}
+.footer .footer-middle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.footer p {
+  color: #4a4a4a;
+  font-size: 10.41666667px;
+  font-weight: 600;
+}
+.footer p a {
+  color: #4a4a4a;
+  font-weight: 800;
+  text-decoration: underline;
+}
+.search-result {
+  margin: 78.125px 93.75px;
+  min-height: 100vh;
+}
+.search-result .search-message {
+  margin-bottom: 26.04166667px;
+  text-align: center;
+  font-size: 10.41666667px;
+  font-weight: bold;
+  color: #333;
+}
+.search-result .search-results-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10.41666667px;
+  margin: 10.41666667px;
+}
+.search-result .shop-card {
+  border: 1.04166667px solid #ccc;
+  padding: 0px;
+  max-width: 187.5px;
+  max-height: 328.125px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}

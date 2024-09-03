@@ -1,0 +1,91 @@
+.main-content.auth {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.main-content.auth .auth-container {
+  max-width: 1458.33333333px;
+  min-width: 781.25px;
+  margin: 0 auto;
+  border: 1.04166667px solid #ccc;
+  display: flex;
+  flex-direction: column;
+}
+.main-content.auth .auth-container h2 {
+  margin-left: 26.04166667px;
+  margin-bottom: 0px;
+}
+.main-content.auth .auth-container .auth-top {
+  padding: 26.04166667px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.main-content.auth .auth-container .auth-top .auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10.41666667px;
+}
+.main-content.auth .auth-container .auth-top .auth-form .auth-input {
+  padding: 10.41666667px;
+  font-size: 15.625px;
+  border-radius: 5.20833333px;
+  border: 1.04166667px solid #ccc;
+}
+.main-content.auth .auth-container .auth-top .auth-form .auth-input-label {
+  font-size: 15.625px;
+  font-weight: bold;
+}
+.main-content.auth .auth-container .auth-top .auth-form .auth-forgot {
+  color: #000;
+  text-decoration: underline;
+}
+.main-content.auth .auth-container .auth-top .auth-form .button:hover {
+  background-color: #333;
+}
+.main-content.auth .auth-container .auth-top .divider {
+  text-align: center;
+  margin: 0px 52.08333333px;
+  font-size: 10.41666667px;
+  color: #999;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.main-content.auth .auth-container .auth-top .divider .line {
+  margin: 10.41666667px;
+  background-color: #e1e1e1;
+  height: 45%;
+  width: 1.04166667px;
+}
+.main-content.auth .auth-container .auth-top .social-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 26.04166667px;
+}
+.main-content.auth .auth-container .auth-top .social-buttons .social-button {
+  height: 52.08333333px;
+  padding: 10.41666667px 26.04166667px;
+  border: 1.04166667px solid #ccc;
+  text-align: center;
+  cursor: pointer;
+  margin: 0 1.30208333px;
+  background-color: #ffffff;
+}
+.auth-footer {
+  padding: 26.04166667px 78.125px;
+  background: #f2f2f2;
+  border-top: 1.04166667px solid #c5c5c5;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.auth-footer p {
+  display: block;
+}
+.auth-footer a {
+  color: #000;
+  text-decoration: none;
+}

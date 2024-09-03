@@ -1,0 +1,123 @@
+@vw: 19.2vw;
+
+@border-width: (20px / @vw);
+@border-width-big: (25px / @vw);
+
+@padding-large: (500px / @vw);
+@padding-big: (300px / @vw);
+@padding-small: (200px / @vw);
+@padding-mini: (100px / @vw);
+
+@margin-mini: (1000px / @vw);
+@margin-small: (1500px / @vw);
+@margin-big: (3000px / @vw);
+
+.main-content.auth {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .auth-container {
+    max-width: (28000px / @vw);
+    min-width: (15000px / @vw);
+    margin: 0 auto;
+    border: @border-width solid #ccc;
+
+    display: flex;
+    flex-direction: column;
+
+    h2 {
+      margin-left: @padding-large;
+      margin-bottom: 0px;
+    }
+
+    .auth-top {
+      padding: @padding-large;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+
+      .auth-form {
+        display: flex;
+        flex-direction: column;
+        gap: @padding-small;
+
+        .auth-input {
+          padding: @padding-small;
+          font-size: @padding-big;
+          border-radius: @padding-mini;
+          border: @border-width solid #ccc;
+        }
+
+        .auth-input-label {
+          font-size: @padding-big;
+          font-weight: bold;
+        }
+
+        .auth-forgot {
+          color: #000;
+          text-decoration: underline;
+        }
+
+        .button:hover {
+          background-color: #333;
+        }
+      }
+
+      .divider {
+        text-align: center;
+        margin: 0px @margin-mini;
+        font-size: @padding-small;
+        color: #999;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        .line {
+            margin: @padding-small;
+            background-color: #e1e1e1;
+            height: 45%;
+            width: @border-width;
+        }
+      }
+
+      .social-buttons {
+        display: flex;
+        justify-content: space-between;
+        margin-top: @padding-large;
+
+        .social-button {
+            height: @margin-mini;
+          padding: @padding-small @padding-large;
+          border: @border-width solid #ccc;
+          text-align: center;
+          cursor: pointer;
+          margin: 0 @border-width-big;
+
+          background-color: #ffffff;
+        }
+      }
+    }
+  }
+}
+
+.auth-footer {
+  padding: @padding-large @margin-small;
+  background: #f2f2f2;
+  border-top: @border-width solid #c5c5c5;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  p {
+    display: block;
+  }
+  a {
+    color: #000;
+    text-decoration: none;
+  }
+}

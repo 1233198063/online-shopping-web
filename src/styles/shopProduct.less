@@ -1,0 +1,13 @@
+@vw: 19.2vw;
+
+@padding-large: (500px / @vw);
+
+@margin-big: (3000px / @vw);
+
+.shop-display {
+  width: 100%;
+  height: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(@margin-big, 1fr));
+  grid-gap: @padding-large;
+}

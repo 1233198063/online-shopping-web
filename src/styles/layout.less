@@ -1,0 +1,233 @@
+@vw: 19.2vw;
+
+@border-width: (20px / @vw);
+@border-width-big: (25px / @vw);
+
+@padding-large: (500px / @vw);
+@padding-big: (300px / @vw);
+@padding-small: (200px / @vw);
+@padding-mini: (100px / @vw);
+
+@margin-mini: (1000px / @vw);
+@margin-small: (1500px / @vw);
+@margin-big: (1800px / @vw);
+
+.layout-div {
+  position: relative;
+}
+
+.nav-bar {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  max-height: @margin-small;
+  padding: @padding-large @padding-small @padding-mini;
+
+  .web-icon {
+    display: block;
+    min-width: (3000px / @vw);
+    height: @margin-mini;
+
+    .icon-img {
+      width: 100%;
+      height: 100%;
+      background-image: url(../../public/images/eyewear-logo.png);
+      background-size: cover;
+      background-position: 50% 50%;
+      background-repeat: no-repeat;
+    }
+  }
+
+  .nav-links {
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    column-gap: @padding-big;
+
+    margin-right: @margin-small;
+
+    a {
+        padding: @padding-small;
+        color: #101010;
+    }
+
+    a:hover {
+        background-color: #f2f2f2;
+    }
+
+    a.active {
+        color: black;
+    }
+
+  }
+
+  .searchbar {
+    display: flex;
+    align-items: center;
+
+    position: relative;
+
+    .search-icon {
+      position: absolute;
+      left: @padding-mini;
+    }
+
+    .search-input {
+      border-width: 0px;
+      border: @border-width-big solid #e1e1e1;
+      padding: @padding-small @padding-small @padding-small @margin-mini;
+
+      width: (5000px / @vw);
+      
+    }
+  }
+
+  .shopping-bag {
+    cursor: pointer;
+    padding: @padding-small;
+  }
+
+  .action-buttons {
+    display: flex;
+    justify-content: flex-end;
+
+    margin-left: @margin-small;
+
+    .user-avatar{
+      display: flex;
+      align-items: center;
+
+      position: relative;
+      
+      .user-avatar-picture {
+        border: @border-width black solid;
+        border-radius: 50%;
+        width: (800px / @vw);
+        height: (800px / @vw);
+  
+        overflow: hidden;
+
+        margin-left: @padding-small;
+
+        img {
+          height: 100%;
+        }
+      }
+
+      .dropdown-menu{
+        display: flex;
+        flex-direction: column;
+
+        position: absolute;
+        top: (1000px / @vw);
+        right: 0px;
+
+        box-shadow: 0 5px 12px #0000001a;
+
+
+        button {
+          padding: @padding-small @padding-small;
+          border: none;
+          cursor: pointer;
+          background-color: rgb(255, 255, 255);
+
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+
+        button:hover {
+          background-color:#e1e1e1;
+        }
+      }
+    }
+  }
+}
+
+.cart-badge {
+  position: absolute;
+  top: - @padding-mini;
+  right: - @padding-mini;
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  width: @padding-small;
+  height: @padding-small;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: @padding-small;
+}
+
+/* alert Notification */
+.alert {
+  position: fixed;
+  top: @margin-big;
+  right: (2500px / @vw);
+  
+  z-index: 10;
+}
+
+.footer {
+  background-color: #f0f0f0;
+  
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  padding: @margin-mini 0px;
+
+  .footer-middle {
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+  }
+
+  p {
+    color: #4a4a4a;
+    font-size: (200px / @vw);
+    font-weight: 600;
+
+    a {
+      color: #4a4a4a;
+      font-weight: 800;
+      text-decoration: underline;
+    }
+  }
+}
+
+.search-result {
+  margin: @margin-small @margin-big;
+  min-height: 100vh;
+
+  .search-message {
+    margin-bottom: @padding-large;
+    text-align: center;
+    font-size: @padding-small;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .search-results-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: @padding-small;
+    margin: @padding-small;
+  }
+
+  .shop-card {
+    border: @border-width solid #ccc;
+    padding: 0px;
+    max-width: 2 * @margin-big;
+    max-height:3.5 * @margin-big;
+  
+    position:relative;
+  
+    display: flex;
+    flex-direction: column;
+  
+    overflow: hidden;
+  }  
+
+}
