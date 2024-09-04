@@ -20,8 +20,7 @@ import CheckIcon from "@mui/icons-material/Check";
 
 // import firebase
 import { collection, query, where, getDocs } from "firebase/firestore";
-import { getFirestore } from "firebase/firestore";
-import { app, db } from "../service/config";
+import { db } from "../service/config";
 
 import "../styles/layout.css";
 
@@ -235,8 +234,6 @@ export default function Layout() {
           </div>
         </div>
       )}
-
-      {/* {element} */}
 
       {/* Show the normal content when no search results are displayed */}
       {!showSearchResults && element}

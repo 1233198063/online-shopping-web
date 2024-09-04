@@ -51,7 +51,7 @@
   border-width: 0px;
   border: 1.30208333px solid #e1e1e1;
   padding: 10.41666667px 10.41666667px 10.41666667px 52.08333333px;
-  width: 260.41666667px;
+  max-width: 260.41666667px;
 }
 .nav-bar .shopping-bag {
   cursor: pointer;
@@ -85,6 +85,8 @@
   top: 52.08333333px;
   right: 0px;
   box-shadow: 0 5px 12px #0000001a;
+  min-width: 145.83333333px;
+  z-index: 5;
 }
 .nav-bar .action-buttons .user-avatar .dropdown-menu button {
   padding: 10.41666667px 10.41666667px;

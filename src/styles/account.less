@@ -1,0 +1,108 @@
+@vw: 19.2vw;
+
+@border-width: (20px / @vw);
+@border-width-big: (25px / @vw);
+
+@padding-large: (500px / @vw);
+@padding-big: (300px / @vw);
+@padding-small: (200px / @vw);
+@padding-mini: (100px / @vw);
+
+@margin-mini: (1000px / @vw);
+@margin-small: (1500px / @vw);
+@margin-big: (1800px / @vw);
+
+.account-container {
+  width: 80%;
+  margin: auto;
+  padding: 0px;
+  background-color: #fff;
+
+  margin: @margin-big auto;
+
+  .account-nav {
+    background: #f2f2f2;
+    border-bottom: - @border-width solid #e1e1e1;
+    padding: 0px;
+
+    .account-buttons {
+        display: flex;
+        border-bottom: @border-width;
+    }
+
+    .account-nav-item {
+      background: none;
+      border: none;
+      font-size: @padding-big;
+      padding: @padding-big @padding-big;
+      cursor: pointer;
+    }
+
+    .account-nav-item:hover {
+        background-color: rgb(234, 234, 234);
+      }
+
+    .account-nav-item.active {
+      border-bottom: @border-width solid #fff;
+      background-color: #fff;
+      color:#000;
+    }
+  }
+
+  .account-header {
+    position: relative;
+    text-align: center;
+
+    margin: 0px @padding-big;
+
+    .account-background {
+      width: 100%;
+      height: 2 * @margin-big;
+      object-fit: cover;
+    }
+
+    .account-avatar {
+      width: @margin-small;
+      height: @margin-small;
+      border-radius: 50%;
+      border: @padding-mini solid #fff;
+      position: absolute;
+      top: (2 * @margin-big - 0.5 * @margin-small);
+      left: @padding-big;
+
+      background-color: antiquewhite;
+
+      overflow: hidden;
+
+      .account-avatar-img {
+        height: 100%;
+      }
+    }
+
+    .edit-account-button {
+      position: absolute;
+      top: (2 * @margin-big - @padding-big);
+      right: @padding-big;
+      padding: @padding-big @padding-large;
+      background-color: #000;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+  }
+
+  .account-details {
+    padding: @margin-big;
+  }
+
+  .account-content {
+    margin-top: @padding-big;
+
+    .wish-list, .orders{
+        background-color: #f2f2f2;
+        text-align: center;
+
+        padding: 3 * @margin-big;
+    }
+  }
+}

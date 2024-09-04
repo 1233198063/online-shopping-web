@@ -1,0 +1,77 @@
+.account-container {
+  width: 80%;
+  margin: auto;
+  padding: 0px;
+  background-color: #fff;
+  margin: 93.75px auto;
+}
+.account-container .account-nav {
+  background: #f2f2f2;
+  border-bottom: - 1.04166667px solid #e1e1e1;
+  padding: 0px;
+}
+.account-container .account-nav .account-buttons {
+  display: flex;
+  border-bottom: 1.04166667px;
+}
+.account-container .account-nav .account-nav-item {
+  background: none;
+  border: none;
+  font-size: 15.625px;
+  padding: 15.625px 15.625px;
+  cursor: pointer;
+}
+.account-container .account-nav .account-nav-item:hover {
+  background-color: #eaeaea;
+}
+.account-container .account-nav .account-nav-item.active {
+  border-bottom: 1.04166667px solid #fff;
+  background-color: #fff;
+  color: #000;
+}
+.account-container .account-header {
+  position: relative;
+  text-align: center;
+  margin: 0px 15.625px;
+}
+.account-container .account-header .account-background {
+  width: 100%;
+  height: 187.5px;
+  object-fit: cover;
+}
+.account-container .account-header .account-avatar {
+  width: 78.125px;
+  height: 78.125px;
+  border-radius: 50%;
+  border: 5.20833333px solid #fff;
+  position: absolute;
+  top: 148.4375px;
+  left: 15.625px;
+  background-color: antiquewhite;
+  overflow: hidden;
+}
+.account-container .account-header .account-avatar .account-avatar-img {
+  height: 100%;
+}
+.account-container .account-header .edit-account-button {
+  position: absolute;
+  top: 171.875px;
+  right: 15.625px;
+  padding: 15.625px 26.04166667px;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+.account-container .account-details {
+  padding: 93.75px;
+}
+.account-container .account-content {
+  margin-top: 15.625px;
+}
+.account-container .account-content .wish-list,
+.account-container .account-content .orders {
+  background-color: #f2f2f2;
+  text-align: center;
+  padding: 281.25px;
+}

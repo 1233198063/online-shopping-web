@@ -5,6 +5,7 @@ import Shop from "../pages/Shop"
 import ProductDetails from "../components/ProductDetails"
 import Register from "../components/Register"
 import Login from "../components/Login"
+import AccountPage from "../pages/Account"
 
 const routes = [
     {
@@ -38,7 +39,10 @@ const routes = [
     {
         path:'/login',
         element:<Login></Login>
-    }
+    },
+    { 
+        path: '/account', 
+        element: <AccountPage/> },
 ]
 
 export default routes
