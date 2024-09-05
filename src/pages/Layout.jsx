@@ -129,6 +129,7 @@ export default function Layout() {
     setDropdownOpen(false);
   };
 
+
   return (
     <div className="layout-div">
       <nav className="nav-bar">

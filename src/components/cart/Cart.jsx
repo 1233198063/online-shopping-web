@@ -58,6 +58,7 @@ const Cart = ({ onClose, isAuthenticated }) => {
     onClose(); // Close the cart and return to the previous page
   };
 
+  
   return (
     <div className="cart-panel">
       <div className="cart-header">

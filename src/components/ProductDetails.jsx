@@ -2,9 +2,14 @@ import React, { useState, useEffect } from "react";
 import { useParams, Link, NavLink } from "react-router-dom";
 import { doc, getDoc } from "firebase/firestore";
 import { getFirestore } from "firebase/firestore";
+import { getAuth } from "firebase/auth";
+import { signInWithEmailAndPassword } from "firebase/auth";
+
 import { app } from "../service/config";
 import { useDispatch, useSelector } from "react-redux";
 import { addItemToCart, removeItemFromCart, selectCartItems } from "../store/cart";
+import { loadUserCart, saveUserCart, syncCartWithFirebase } from "../store/userData";
+import { selectCurrentUser } from "../store/auth";
 
 import RecommendedProducts from "./RecommendedProducts";
 
@@ -14,6 +19,7 @@ const ProductDetails = () => {
   const { id } = useParams(); // Get the product ID from the URL
   const db = getFirestore(app);
   const dispatch = useDispatch();
+  const currentUser = useSelector(selectCurrentUser);
 
   const [product, setProduct] = useState(null); // State to store the product data
   const [loading, setLoading] = useState(true); // State to manage loading state
@@ -61,8 +67,14 @@ const ProductDetails = () => {
   const handleButtonClick = () => {
     if (isInCart) {
       dispatch(removeItemFromCart({ ...product, size: selectedSize, color: selectedColor }));
+      if (currentUser) {
+        dispatch(syncCartWithFirebase(currentUser.uid)); // Sync changes to Firebase
+      }
     } else {
       dispatch(addItemToCart({ ...product, size: selectedSize, color: selectedColor }));
+      if (currentUser) {
+        dispatch(syncCartWithFirebase(currentUser.uid)); // Sync changes to Firebase
+      }
     }
   };
 
@@ -77,6 +89,20 @@ const ProductDetails = () => {
   if (!product) {
     return <div>Product not found</div>;
   }
+
+  const auth = getAuth();
+  const handleLogin = async (email, password) => {
+    try {
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      const user = userCredential.user;
+
+      // Load cart from Firestore and sync with Redux
+      const cartItems = await loadUserCart(user.uid);
+      dispatch(selectCartItems(cartItems)); // Set the cart in Redux
+    } catch (error) {
+      console.error("Error logging in: ", error);
+    }
+  };
 
   return (
     <div>
@@ -116,7 +142,7 @@ const ProductDetails = () => {
             <p className="product-info-description">{product.description}</p>
 
             <p className="product-info-subtitle">Lens Width and Frame Size</p>
-             
+
             <select
               value={selectedSize}
               onChange={(e) => setSelectedSize(e.target.value)}
