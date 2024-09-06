@@ -5,7 +5,7 @@ import {
   hideNotification,
   selectNotification,
 } from "../store/cart";
-import { selectCurrentUser, logout } from "../store/auth";
+import { selectCurrentUser, logout, selectIsAuthenticated } from "../store/auth";
 import { NavLink, useRoutes, useNavigate, useLocation } from "react-router-dom";
 import routes from "../route";
 
@@ -95,6 +95,9 @@ export default function Layout() {
     return `${totalQuantity} notifications`;
   }
 
+  const isAuthenticated = useSelector(selectIsAuthenticated);
+
+
   // Clear search results when navigating to another page
   useEffect(() => {
     if (location.pathname !== "") {
@@ -122,6 +125,7 @@ export default function Layout() {
   const handleSignOut = () => {
     dispatch(logout());
     setDropdownOpen(false);
+    navigate("/");
   };
 
   const handleViewAccount = () => {

@@ -54,7 +54,7 @@ const ProductDetails = () => {
     fetchProduct();
   }, [id, db]);
 
-  const cartItems = useSelector(selectCartItems);
+  const cartItems = useSelector(selectCartItems) || [];
 
   // Determine if the item is in the cart
   const isInCart = product && cartItems.some(
@@ -67,14 +67,14 @@ const ProductDetails = () => {
   const handleButtonClick = () => {
     if (isInCart) {
       dispatch(removeItemFromCart({ ...product, size: selectedSize, color: selectedColor }));
-      if (currentUser) {
-        dispatch(syncCartWithFirebase(currentUser.uid)); // Sync changes to Firebase
-      }
+      // if (currentUser) {
+      //   dispatch(syncCartWithFirebase(currentUser.uid)); // Sync changes to Firebase
+      // }
     } else {
       dispatch(addItemToCart({ ...product, size: selectedSize, color: selectedColor }));
-      if (currentUser) {
-        dispatch(syncCartWithFirebase(currentUser.uid)); // Sync changes to Firebase
-      }
+      // if (currentUser) {
+      //   dispatch(syncCartWithFirebase(currentUser.uid)); // Sync changes to Firebase
+      // }
     }
   };
 
@@ -90,19 +90,7 @@ const ProductDetails = () => {
     return <div>Product not found</div>;
   }
 
-  const auth = getAuth();
-  const handleLogin = async (email, password) => {
-    try {
-      const userCredential = await signInWithEmailAndPassword(auth, email, password);
-      const user = userCredential.user;
-
-      // Load cart from Firestore and sync with Redux
-      const cartItems = await loadUserCart(user.uid);
-      dispatch(selectCartItems(cartItems)); // Set the cart in Redux
-    } catch (error) {
-      console.error("Error logging in: ", error);
-    }
-  };
+  
 
   return (
     <div>

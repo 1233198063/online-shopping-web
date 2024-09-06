@@ -88,7 +88,8 @@ export const {
   hideNotification,
 } = cartSlice.actions;
 
-export const selectCartItems = (state) => state.cart.items;
+// export const selectCartItems = (state) => state.cart.items;
+export const selectCartItems = (state) => state.cart?.items || [];
 export const isItemInCart = (state, itemId) =>
   state.cart.items.some((item) => item.id === itemId);
 export const selectTotalQuantity = (state) =>

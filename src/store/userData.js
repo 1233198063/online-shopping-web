@@ -27,8 +27,10 @@ export const saveUserCart = async (userId, cartItems) => {
 
 // In Redux action
 export const syncCartWithFirebase = (userId) => async (dispatch, getState) => {
-  const cartItems = getState().cart.items; // Get items from Redux store
-  await saveUserCart(userId, cartItems);
-  dispatch(selectCartItems(cartItems));
+  const cartItems = getState().cart?.items || []; // Ensure cartItems is always an array
+  if (cartItems.length > 0) {
+    await saveUserCart(userId, cartItems);
+    dispatch(selectCartItems(cartItems)); // Sync with Redux after saving to Firebase
+  }
 };
 

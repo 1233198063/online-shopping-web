@@ -4,6 +4,9 @@ import { getAuth, signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { setUser } from "../store/auth";
 
+import { selectCartItems } from "../store/cart";
+import { loadUserCart } from "../store/userData";
+
 import "../styles/auth.css";
 
 export default function Login() {
@@ -27,14 +30,30 @@ export default function Login() {
   const auth = getAuth();
 
   // Click to login
-  const handleClick = async (e) => {
-    e.preventDefault();
+  // const handleClick = async (e) => {
+  //   e.preventDefault();
+  //   try {
+  //     const res = await signInWithEmailAndPassword(auth, email, password);
+  //     dispatch(setUser(res.user));
+  //     navigate("/"); // Redirect to the home page or any other page after login
+  //   } catch (error) {
+  //     console.error(error.message);
+  //   }
+  // };
+
+  const handleClick= async (email, password) => {
     try {
-      const res = await signInWithEmailAndPassword(auth, email, password);
-      dispatch(setUser(res.user));
-      navigate("/"); // Redirect to the home page or any other page after login
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      const user = userCredential.user;
+
+      // Load cart from Firestore and sync with Redux
+      const cartItems = await loadUserCart(user.uid);
+      dispatch(selectCartItems(cartItems || [])); // Ensure cartItems is an array, even if empty
+
+      dispatch(setUser(user));
+      navigate("/");
     } catch (error) {
-      console.error(error.message);
+      console.error("Error logging in: ", error);
     }
   };
 

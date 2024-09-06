@@ -9,11 +9,13 @@ import {
 } from "../../store/cart";
 import { useNavigate } from "react-router-dom";
 import Modal from "react-modal";
+import { selectCurrentUser } from "../../store/auth";
 
 import "../../styles/cart.css";
 
-const Cart = ({ onClose, isAuthenticated }) => {
+const Cart = ({ onClose }) => {
   const cartItems = useSelector(selectCartItems);
+  const currentUser = useSelector(selectCurrentUser);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -34,7 +36,7 @@ const Cart = ({ onClose, isAuthenticated }) => {
 
   // Check out
   const handleCheckOut = () => {
-    if (isAuthenticated) {
+    if (currentUser) {
       // Proceed to checkout
       navigate("/checkout");
     } else {

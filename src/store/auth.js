@@ -39,6 +39,8 @@ export const logout = () => async (dispatch) => {
   await signOut(auth);
   dispatch(clearUser());
 };
+export const selectIsAuthenticated = (state) => !!state.auth.currentUser;
+
 
 const authReducer = authSlice.reducer
 export default authReducer;
