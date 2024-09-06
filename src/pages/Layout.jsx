@@ -95,7 +95,7 @@ export default function Layout() {
     return `${totalQuantity} notifications`;
   }
 
-  const isAuthenticated = useSelector(selectIsAuthenticated);
+  // const isAuthenticated = useSelector(selectIsAuthenticated);
 
 
   // Clear search results when navigating to another page
@@ -190,16 +190,16 @@ export default function Layout() {
                   style={{ cursor: "pointer" }}
                 />
               </div>
-              <span class="material-symbols-outlined">keyboard_arrow_down</span>
+              <span className="material-symbols-outlined">keyboard_arrow_down</span>
               {dropdownOpen && (
                 <div className="dropdown-menu">
                   <button onClick={handleViewAccount}>
                     View account
-                    <span class="material-symbols-outlined">person</span>
+                    <span className="material-symbols-outlined">person</span>
                   </button>
                   <button onClick={handleSignOut}>
                     Sign Out
-                    <span class="material-symbols-outlined">logout</span>
+                    <span className="material-symbols-outlined">logout</span>
                   </button>
                 </div>
               )}

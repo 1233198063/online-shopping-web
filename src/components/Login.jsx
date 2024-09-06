@@ -30,32 +30,33 @@ export default function Login() {
   const auth = getAuth();
 
   // Click to login
-  // const handleClick = async (e) => {
-  //   e.preventDefault();
-  //   try {
-  //     const res = await signInWithEmailAndPassword(auth, email, password);
-  //     dispatch(setUser(res.user));
-  //     navigate("/"); // Redirect to the home page or any other page after login
-  //   } catch (error) {
-  //     console.error(error.message);
-  //   }
-  // };
-
-  const handleClick= async (email, password) => {
+  const handleClick = async (e) => {
+    e.preventDefault();
     try {
-      const userCredential = await signInWithEmailAndPassword(auth, email, password);
-      const user = userCredential.user;
-
-      // Load cart from Firestore and sync with Redux
-      const cartItems = await loadUserCart(user.uid);
-      dispatch(selectCartItems(cartItems || [])); // Ensure cartItems is an array, even if empty
-
-      dispatch(setUser(user));
-      navigate("/");
+      const res = await signInWithEmailAndPassword(auth, email, password);
+      dispatch(setUser(res.user));
+      navigate("/"); // Redirect to the home page or any other page after login
     } catch (error) {
-      console.error("Error logging in: ", error);
+      console.error(error.message);
     }
   };
+
+  // const handleClick= async (e) => {
+  //   e.preventDefault();
+  //   try {
+  //     const userCredential = await signInWithEmailAndPassword(auth, email, password);
+  //     const user = userCredential.user;
+
+  //     // Load cart from Firestore and sync with Redux
+  //     const cartItems = await loadUserCart(user.uid);
+  //     dispatch(selectCartItems(cartItems || [])); // Ensure cartItems is an array, even if empty
+
+  //     dispatch(setUser(user));
+  //     navigate("/");
+  //   } catch (error) {
+  //     console.error("Error logging in: ", error);
+  //   }
+  // };
 
   return (
     <div className="main-content auth">
@@ -82,7 +83,7 @@ export default function Login() {
             </a>
             <button type="submit" className="button">
               Sign In
-              <span class="material-symbols-outlined">arrow_forward</span>
+              <span className="material-symbols-outlined">arrow_forward</span>
             </button>
           </form>
 

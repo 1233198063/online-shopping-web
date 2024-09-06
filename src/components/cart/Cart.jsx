@@ -39,6 +39,7 @@ const Cart = ({ onClose }) => {
     if (currentUser) {
       // Proceed to checkout
       navigate("/checkout");
+      onClose();
     } else {
       // Show the modal
       setIsModalOpen(true);

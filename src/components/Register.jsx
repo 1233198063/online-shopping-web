@@ -99,7 +99,7 @@ export default function Register() {
             />
             <button type="submit" value="Register" className="button">
               Sign Up
-              <span class="material-symbols-outlined">arrow_forward</span>
+              <span className="material-symbols-outlined">arrow_forward</span>
             </button>
           </form>
 
