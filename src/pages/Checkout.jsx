@@ -100,7 +100,7 @@ const Checkout = () => {
             </div>
             <button
               className="remove-button button-white button"
-              onClick={() => dispatch(removeItemFromCart(item))}
+              onClick={()=> handleRemoveItem(item)}
             >
               X
             </button>
