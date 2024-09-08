@@ -100,7 +100,7 @@ const Checkout = () => {
             </div>
             <button
               className="remove-button button-white button"
-              onClick={()=> handleRemoveItem(item)}
+              onClick={() => handleRemoveItem(item)}
             >
               X
             </button>
@@ -110,6 +110,9 @@ const Checkout = () => {
 
       <div className="checkout-summary">
         <button className="button button-white" onClick={() => navigate("/shop")}>
+          <span class="material-symbols-outlined">
+            storefront
+          </span>
           Continue Shopping
         </button>
         <div className="right-bottom">

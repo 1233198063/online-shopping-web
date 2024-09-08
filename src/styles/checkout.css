@@ -59,6 +59,9 @@
   align-items: flex-end;
   margin-bottom: 78.125px;
 }
+.checkout-summary .material-symbols-outlined {
+  margin-right: 5.20833333px;
+}
 .checkout-summary .checkout-subtotal {
   text-align: right;
 }
