@@ -67,14 +67,8 @@ const ProductDetails = () => {
   const handleButtonClick = () => {
     if (isInCart) {
       dispatch(removeItemFromCart({ ...product, size: selectedSize, color: selectedColor }));
-      // if (currentUser) {
-      //   dispatch(syncCartWithFirebase(currentUser.uid)); // Sync changes to Firebase
-      // }
     } else {
       dispatch(addItemToCart({ ...product, size: selectedSize, color: selectedColor }));
-      // if (currentUser) {
-      //   dispatch(syncCartWithFirebase(currentUser.uid)); // Sync changes to Firebase
-      // }
     }
   };
 

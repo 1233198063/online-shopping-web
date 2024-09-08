@@ -4,7 +4,7 @@ import { removeItemFromCart, increaseItemQuantity, decreaseItemQuantity, selectC
 import { useNavigate } from "react-router-dom";
 import "../styles/checkout.css";
 
-const CheckoutPage = () => {
+const Checkout = () => {
   const cartItems = useSelector(selectCartItems);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -32,51 +32,98 @@ const CheckoutPage = () => {
   return (
     <div className="checkout-page">
       <div className="steps">
-        <div className="step active">1</div>
-        <div className="step">2</div>
-        <div className="step">3</div>
-        <p className="step-title">Order Summary</p>
+        <div className="line"></div>
+        <div className="step-box">
+          <div className="step active">1</div>
+          <p className="step-title active">Order Summary</p>
+        </div>
+        <div className="step-box">
+          <div className="step">2</div>
+          <p className="step-title">Shipping Details</p>
+        </div>
+        <div className="step-box">
+          <div className="step">3</div>
+          <p className="step-title">Payment</p>
+        </div>
       </div>
 
-      <h2>Order Summary</h2>
-      <p>Review items in your basket.</p>
+      <div className="title">
+        <h2>Order Summary</h2>
+        <p>Review items in your basket.</p>
+      </div>
 
-      <div className="order-items">
-        {cartItems.map((item) => (
-          <div key={item.id} className="order-item">
-            <div className="quantity-buttons">
-              <button onClick={() => handleIncreaseQuantity(item)}>+</button>
-              <button onClick={() => handleDecreaseQuantity(item)} disabled={item.quantity === 1}>-</button>
+      <div className="cart-content">
+        {cartItems.map((item, index) => (
+          <div key={index} className="cart-item">
+            <div className="buttons">
+              <button
+                className="add button button-white"
+                onClick={() => handleIncreaseQuantity(item)}
+              >
+                +
+              </button>
+              <button
+                className="subtract button button-white"
+                onClick={() => handleDecreaseQuantity(item)}
+                disabled={item.quantity === 1}
+              >
+                -
+              </button>
             </div>
-            <div className="item-image">
+            <div className="item-img">
               <img src={item.image} alt={item.name} />
             </div>
-            <div className="item-details">
+            <div className="cart-item-info">
               <h3>{item.name}</h3>
-              <p>Quantity: {item.quantity}</p>
-              <p>Size: {item.size} mm</p>
-              <p>Color: <span className="color-box" style={{ backgroundColor: item.color }}></span></p>
+              <div className="item-details">
+                <div className="quantity">
+                  <p>Quantity</p>
+                  <div> {item.quantity}</div>
+                </div>
+                <div className="size">
+                  <p>Size</p>
+                  <div> {item.size} mm</div>
+                </div>
+                <div className="color">
+                  <p>
+                    Color{" "}
+                  </p>
+                  <span
+                    style={{ backgroundColor: item.color }}
+                    className="color-box"
+                  ></span>
+                </div>
+              </div>
             </div>
-            <div className="item-price">${(item.price * item.quantity).toFixed(2)}</div>
-            <button className="remove-item" onClick={() => handleRemoveItem(item)}>X</button>
+            <div className="cart-item-price">
+              ${(item.price * item.quantity).toFixed(2)}
+            </div>
+            <button
+              className="remove-button button-white button"
+              onClick={() => dispatch(removeItemFromCart(item))}
+            >
+              X
+            </button>
           </div>
         ))}
       </div>
 
       <div className="checkout-summary">
-        <button className="continue-shopping" onClick={() => navigate("/shop")}>
+        <button className="button button-white" onClick={() => navigate("/shop")}>
           Continue Shopping
         </button>
-        <div className="checkout-subtotal">
-          <p>Subtotal:</p>
-          <h3>${subtotal}</h3>
+        <div className="right-bottom">
+          <div className="checkout-subtotal">
+            <p>Subtotal:</p>
+            <h2>${subtotal}</h2>
+          </div>
+          <button className="next-step button" onClick={handleNextStep}>
+            Next Step <span className="material-symbols-outlined">arrow_forward</span>
+          </button>
         </div>
-        <button className="next-step" onClick={handleNextStep}>
-          Next Step <span className="material-symbols-outlined">arrow_forward</span>
-        </button>
       </div>
     </div>
   );
 };
 
-export default CheckoutPage;
+export default Checkout;

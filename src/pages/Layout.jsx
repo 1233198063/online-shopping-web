@@ -95,8 +95,6 @@ export default function Layout() {
     return `${totalQuantity} notifications`;
   }
 
-  // const isAuthenticated = useSelector(selectIsAuthenticated);
-
 
   // Clear search results when navigating to another page
   useEffect(() => {
