@@ -1,11 +1,8 @@
 import React, { useRef, useState } from "react";
 import { useDispatch } from "react-redux";
-import { getAuth, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword} from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { setUser } from "../store/auth";
-
-import { selectCartItems } from "../store/cart";
-import { loadUserCart } from "../store/userData";
 
 import "../styles/auth.css";
 
@@ -35,28 +32,12 @@ export default function Login() {
     try {
       const res = await signInWithEmailAndPassword(auth, email, password);
       dispatch(setUser(res.user));
-      navigate("/"); // Redirect to the home page or any other page after login
+      navigate("/"); // Redirect to the home page
     } catch (error) {
       console.error(error.message);
     }
   };
 
-  // const handleClick= async (e) => {
-  //   e.preventDefault();
-  //   try {
-  //     const userCredential = await signInWithEmailAndPassword(auth, email, password);
-  //     const user = userCredential.user;
-
-  //     // Load cart from Firestore and sync with Redux
-  //     const cartItems = await loadUserCart(user.uid);
-  //     dispatch(selectCartItems(cartItems || [])); // Ensure cartItems is an array, even if empty
-
-  //     dispatch(setUser(user));
-  //     navigate("/");
-  //   } catch (error) {
-  //     console.error("Error logging in: ", error);
-  //   }
-  // };
 
   return (
     <div className="main-content auth">
@@ -78,9 +59,9 @@ export default function Login() {
               onBlur={getPassword}
               ref={passwordRef}
             />
-            <a href="#" className="auth-forgot">
+            <div className="auth-forgot">
               Forgot password?
-            </a>
+            </div>
             <button type="submit" className="button">
               Sign In
               <span className="material-symbols-outlined">arrow_forward</span>
@@ -102,9 +83,9 @@ export default function Login() {
 
         <div className="auth-footer">
           <p>Don't have an account? </p>
-          <a className="button button-white" onClick={() => navigate("/register")}>
+          <div className="button button-white" onClick={() => navigate("/register")}>
             Sign Up
-          </a>
+          </div>
         </div>
       </div>
     </div>

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import { selectCurrentUser } from "../store/auth"; // Import the selector from your auth slice
+import { selectCurrentUser } from "../store/auth";
 
-import "../styles/account.css"; // Create a separate CSS file for styling
+import "../styles/account.css";
 
 const AccountPage = () => {
     const currentUser = useSelector(selectCurrentUser);

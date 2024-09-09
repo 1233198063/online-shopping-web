@@ -1,5 +1,5 @@
 import React from "react";
-import { collection, setDoc, doc, getDoc } from "firebase/firestore";
+import { setDoc, doc, getDoc } from "firebase/firestore";
 import { getFirestore } from "firebase/firestore";
 import { app } from "../service/config";
 import { productList } from "../data";

@@ -39,6 +39,7 @@
 .main-content.auth .auth-container .auth-top .auth-form .auth-forgot {
   color: #000;
   text-decoration: underline;
+  cursor: pointer;
 }
 .main-content.auth .auth-container .auth-top .auth-form .button:hover {
   background-color: #333;
