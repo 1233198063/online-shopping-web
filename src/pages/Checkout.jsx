@@ -23,10 +23,6 @@ const Checkout = () => {
     }
   };
 
-  const handleNextStep = () => {
-    navigate("/shipping-details");
-  };
-
   const subtotal = cartItems.reduce((total, item) => total + item.price * item.quantity, 0).toFixed(2);
 
   return (
@@ -110,7 +106,7 @@ const Checkout = () => {
 
       <div className="checkout-summary">
         <button className="button button-white" onClick={() => navigate("/shop")}>
-          <span class="material-symbols-outlined">
+          <span className="material-symbols-outlined">
             storefront
           </span>
           Continue Shopping
@@ -120,7 +116,7 @@ const Checkout = () => {
             <p>Subtotal:</p>
             <h2>${subtotal}</h2>
           </div>
-          <button className="next-step button" onClick={handleNextStep}>
+          <button className="next-step button">
             Next Step <span className="material-symbols-outlined">arrow_forward</span>
           </button>
         </div>
