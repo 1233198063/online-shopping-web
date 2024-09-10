@@ -21,18 +21,18 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - Store and retrieve product data from Firebase
 
 ## Screenshots
-- Home Page
+### Home Page
    ![image](https://github.com/user-attachments/assets/c3202d90-19af-46ce-855b-10ff7def7996)
    ![image](https://github.com/user-attachments/assets/b2187935-f764-4194-bc5d-21efd8bc9b23)
-- Shop Page
+### Shop Page
    ![image](https://github.com/user-attachments/assets/db17079a-e4fd-4e18-babe-df2aa67fee87)
-- My Basket (shows after clicking the basket icon)
+### My Basket (shows after clicking the basket icon)
   ![image](https://github.com/user-attachments/assets/730e7085-2590-4eaa-bb46-53ee8af77d1d)
-- Search Product
+### Search Product
   ![image](https://github.com/user-attachments/assets/f656c3c1-02aa-4d91-ba85-c997f4b8c725)
-- Logout / View Account (shows after clicking the user's avatar)
+### Logout / View Account (shows after clicking the user's avatar)
   ![image](https://github.com/user-attachments/assets/7e93fbaa-7abd-46fc-8de3-73e6d090bfd9)
-- Sign up / Sign In
+### Sign up / Sign In
   ![image](https://github.com/user-attachments/assets/59229384-0d21-47c4-a397-af65decbaa12)
 
 
