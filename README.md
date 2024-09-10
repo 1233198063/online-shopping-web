@@ -26,11 +26,11 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Setup
 
-### 1. Clone the repository:
-   `git clone https://github.com/yourusername/yourproject.git`
-### 2. Install dependencies:
+1. Clone the repository:
+   `git clone https://github.com/1233198063/online-shopping-web.git`
+2. Install dependencies:
    `npm install`
-### 3. Run the project:
+3. Run the project:
    `npm start`
 
 ## Usage
