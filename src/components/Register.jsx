@@ -17,9 +17,10 @@ export default function Register() {
   const db = getFirestore(app);
   const navigate = useNavigate();
 
-  const [uname, setUname] = useState();
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
+  const [uname, setUname] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
   const unameRef = useRef();
   const emailRef = useRef();
@@ -67,6 +68,12 @@ export default function Register() {
       const errorCode = error.code;
       const errorMessage = error.message;
       console.error(errorCode, errorMessage);
+
+      if (errorCode === 'auth/email-already-in-use') {
+        setErrorMessage('The email address is already in use by another account.');
+      } else {
+        setErrorMessage(errorMessage);
+      }
     }
   };
 
@@ -80,21 +87,21 @@ export default function Register() {
             <input
               type="text"
               className="auth-input"
-              onBlur={getUname}
+              onChange={getUname}
               ref={unameRef}
             />
             <label className="auth-input-label">Email</label>
             <input
               type="email"
               className="auth-input"
-              onBlur={getEmail}
+              onChange={getEmail}
               ref={emailRef}
             />
             <label className="auth-input-label">Password</label>
             <input
               type="password"
               className="auth-input"
-              onBlur={getPassword}
+              onChange={getPassword}
               ref={passwordRef}
             />
             <button type="submit" value="Register" className="button">
@@ -118,9 +125,9 @@ export default function Register() {
 
         <div className="auth-footer">
           <p>Already have an account? </p>
-          <a className="button button-white" onClick={() => navigate("/login")}>
+          <div className="button button-white" onClick={() => navigate("/login")}>
             Sign In
-          </a>
+          </div>
         </div>
       </div>
     </div>

@@ -7,8 +7,10 @@ import { setUser } from "../store/auth";
 import "../styles/auth.css";
 
 export default function Login() {
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
+  const [uname, setUname] = useState(""); 
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
   const emailRef = useRef();
   const passwordRef = useRef();
@@ -35,12 +37,14 @@ export default function Login() {
       navigate("/"); // Redirect to the home page
     } catch (error) {
       console.error(error.message);
+      setErrorMessage(error.message);
     }
   };
 
 
   return (
     <div className="main-content auth">
+      {errorMessage && <div className="error-message">{errorMessage}</div>}
       <div className="auth-container">
         <h2>Sign in to Salinaka</h2>
         <div className="auth-top">
@@ -49,14 +53,14 @@ export default function Login() {
             <input
               type="email"
               className="auth-input"
-              onBlur={getEmail}
+              onChange={getEmail}
               ref={emailRef}
             />
             <label className="auth-input-label">Password</label>
             <input
               type="password"
               className="auth-input"
-              onBlur={getPassword}
+              onChange={getPassword}
               ref={passwordRef}
             />
             <div className="auth-forgot">
