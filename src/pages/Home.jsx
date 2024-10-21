@@ -25,7 +25,7 @@ export default function Home() {
           </NavLink>
         </div>
         <div className="banner-img-wrapper">
-          <img className="banner-img" src="/images/banner-girl1.png" alt="" />
+          <img className="banner-img" src="/online-shopping-web/images/banner-girl1.png" alt="" />
         </div>
       </div>
 

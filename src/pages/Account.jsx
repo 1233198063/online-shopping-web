@@ -24,12 +24,12 @@ const AccountPage = () => {
                         <div className="account-header">
                             <img
                                 className="account-background"
-                                src="/images/account-background.jpg"
+                                src="/online-shopping-web/images/account-background.jpg"
                                 alt="Account Background" />
                             <div className="account-avatar">
                                 <img
                                     className="account-avatar-img"
-                                    src={currentUser.photoURL || "/images/banner-girl1.png"}
+                                    src={currentUser.photoURL || "/online-shopping-web/images/banner-girl1.png"}
                                     alt="User Avatar" />
                             </div>
 

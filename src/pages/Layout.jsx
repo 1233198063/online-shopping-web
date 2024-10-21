@@ -182,7 +182,7 @@ export default function Layout() {
               <p>{currentUser.displayName}</p>
               <div className="user-avatar-picture">
                 <img
-                  src="/images/banner-girl1.png"
+                  src="/online-shopping-web/images/banner-girl1.png"
                   alt="User Avatar"
                   onClick={handleAvatarClick}
                   style={{ cursor: "pointer" }}
@@ -274,7 +274,7 @@ export default function Layout() {
         <div className="footer-middle">
           <img
             className="footer-logo"
-            src="/images/eyewear-logo.png"
+            src="/online-shopping-web/images/eyewear-logo.png"
             alt="footer logo"
           />
           <p>© 2024</p>

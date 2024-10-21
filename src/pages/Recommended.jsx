@@ -13,7 +13,7 @@ export default function Recommended() {
         <div className="banner-img-wrapper">
           <img
             className="banner-img"
-            src="/images/banner-girl-recommended.png"
+            src="/online-shopping-web/images/banner-girl-recommended.png"
             alt=""
           />
         </div>

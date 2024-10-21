@@ -12,7 +12,7 @@ export default function Featured() {
         <div className="banner-img-wrapper">
           <img
             className="banner-img"
-            src="/images/banner-guy-featured.png"
+            src="/online-shopping-web/images/banner-guy-featured.png"
             alt=""
           />
         </div>
